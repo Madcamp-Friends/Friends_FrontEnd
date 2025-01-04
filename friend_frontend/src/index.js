@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './login/App.js';
+import Menu from './menu_bar/menu'
 import reportWebVitals from './reportWebVitals';
 import Login from './login/login.js';
 
