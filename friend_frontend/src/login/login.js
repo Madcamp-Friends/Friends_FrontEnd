@@ -21,7 +21,7 @@ const Login = () => {
         setErrorMessage("");
         alert("Login successful");
         setIsModalOpen(false);
-        navigate("/Menu") // Close modal after successful login
+        navigate("/Home")
     };
 
     const handleCreateAccount = () => {
