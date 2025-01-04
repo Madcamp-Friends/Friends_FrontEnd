@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './menu.css';
 
 function Menu() {
@@ -33,7 +34,9 @@ function Menu() {
       <nav className={`menu ${isMenuOpen ? 'open' : ''}`}>
         <ul>
           <li>홈 화면</li>
-          <li>친구 맺기</li>
+          <li>
+            <Link to="/friends">친구 맺기</Link>
+          </li>
           <li>일정 관리</li>
           <li>뇌 공유</li>
         </ul>
