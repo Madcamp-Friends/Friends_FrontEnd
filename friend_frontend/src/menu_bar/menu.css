@@ -1,0 +1,151 @@
+/* 전체 레이아웃 스타일 */
+.app {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* 🔹 헤더 스타일 */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+  }
+  
+  /* 헤더 왼쪽 */
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  /* 햄버거 버튼 */
+  .hamburger {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* 앱 이름 */
+  .app-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  /* 헤더 오른쪽 */
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  /* 헤더 버튼 */
+  .header-btn {
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  /* 프로필 이미지 */
+  .profile-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* 🔹 메뉴 스타일 */
+  .menu {
+    position: fixed;
+    top: 56px; /* 헤더 높이만큼 아래로 이동 */
+    left: 0;
+    width: 250px;
+    height: calc(100% - 56px);
+    background: #f9f9f9;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+  }
+  
+  .menu.open {
+    transform: translateX(0);
+  }
+  
+  /* 메뉴 아이템 스타일 */
+  .menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu li {
+    margin: 15px 0;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .menu ul li {
+    display: flex; /* 아이콘과 텍스트를 나란히 배치 */
+    align-items: center; /* 수직 정렬 */
+    gap: 8px; /* 아이콘과 텍스트 사이 간격 */
+    margin: 10px 0; /* 각 메뉴 항목 간 간격 */
+    font-size: 16px;
+  }
+  
+  /* 아이콘 추가 */
+  .menu ul li::before {
+    content: ''; /* 가상 요소 내용 */
+    display: inline-block; /* 아이콘이 공간을 차지하도록 설정 */
+    width: 24px; /* 아이콘 너비 */
+    height: 24px; /* 아이콘 높이 */
+    background-size: cover; /* 아이콘이 요소에 꽉 차도록 */
+    background-repeat: no-repeat; /* 반복 방지 */
+  }
+  
+  /* 각 항목에 아이콘 지정 */
+  .menu ul li:nth-child(1)::before {
+    background-image: url('/public/assets/Home.svg'); /* 홈 아이콘 */
+  }
+  
+  .menu ul li:nth-child(2)::before {
+    background-image: url('/public/assets/Join.svg'); /* 친구 아이콘 */
+  }
+  
+  .menu ul li:nth-child(3)::before {
+    background-image: url('/public/assets/Calendar.svg'); /* 일정 아이콘 */
+  }
+  
+  .menu ul li:nth-child(4)::before {
+    background-image: url('/public/assets/Brain.svg'); /* 뇌 아이콘 */
+  }
+  /* 로그아웃 버튼 */
+  .logout {
+    margin-top: 20px;
+    background-color: #ff7b54;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* 🔹 메인 콘텐츠 스타일 */
+  .content {
+    padding: 20px;
+    margin-top: 10px;
+    transition: margin-left 0.3s ease-in-out;
+  }
+  
+  /* 메뉴가 열렸을 때 콘텐츠 이동 */
+  .content.menu-open {
+    margin-left: 250px;
+  }
+  
