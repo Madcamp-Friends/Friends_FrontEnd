@@ -12,12 +12,12 @@ const CreateAccount = () => {
         e.preventDefault();
         // Add logic to handle account creation here
         try{
-            const response= await fetch('http://localhost:8080/api/auth/create-account',{
-                method: 'POST',
+            const response= await fetch('http://localhost:8080/api/auth/create-account', {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
+                    "Content-Type": "application/json",
                 },
-                body: new URLSearchParams({
+                body: JSON.stringify({
                     nickname: nickname,
                     email: email,
                     password: password,
@@ -25,18 +25,19 @@ const CreateAccount = () => {
             });
 
             if(response.ok){
-                alert('Account created successfully');
-                navigate('/login');
+                const data= await response.text();
+                alert(data);
+                navigate('/Home');
             }else{
                 const errorText=await response.text();
                 alert(errorText);
             }
         }catch(error){
-            alert('An error occurred. Please try again');
+            alert('Please try again');
         }
     };
     const handleBackToLogin=()=>{
-        navigate('/login');
+        navigate('/');
     };
 
     return (
@@ -44,7 +45,7 @@ const CreateAccount = () => {
             <h2>Create Account</h2>
             <form onSubmit={handleCreate}>
                 <div className="input-field">
-                    <label>Username:</label>
+                    <label>Nickname:</label>
                     <input
                         type="text"
                         value={nickname}
@@ -73,7 +74,7 @@ const CreateAccount = () => {
                         required
                     />
                 </div>
-                <button type="submit">Create Account</button>
+                <button type="submit" onClick={handleCreate}>Create Account</button>
             </form>
             <button type="button" onClick={handleBackToLogin} className="back-to-login-button">
                 Back to Login
