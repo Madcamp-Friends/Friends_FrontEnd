@@ -1,48 +1,47 @@
 .friend-list {
-    width: 80%;
-    margin: 20px auto;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* 검색창 스타일 */
-  .search-bar {
-    margin-bottom: 20px;
-  }
-  
-  .search-bar input {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  /* 친구 아이템 스타일 */
-  .friend-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #ffe6e6;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 8px;
-  }
-  
-  .friend-icon {
-    width: 40px;
-    height: 40px;
-    margin-right: 12px;
-  }
-  
-  .friend-nickname {
-    flex: 1;
-    font-size: 16px;
-  }
-  
-  .friend-status {
-    background-color: #e6ccff;
-    color: #6b4fbb;
-    border-radius: 12px;
-    padding: 4px 8px;
-    font-size: 12px;
-  }
-  
+  width: 80%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+/* 검색창 스타일 */
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* 친구 아이템 스타일 */
+.friend-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffe6e6;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.friend-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+}
+
+.friend-nickname {
+  flex: 1;
+  font-size: 16px;
+}
+
+.friend-status {
+  background-color: #e6ccff;
+  color: #6b4fbb;
+  border-radius: 12px;
+  padding: 4px 8px;
+  font-size: 12px;
+}
