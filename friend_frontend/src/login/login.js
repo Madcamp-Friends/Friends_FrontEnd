@@ -20,7 +20,8 @@ const Login = () => {
         console.log("Login:", { username, password });
         setErrorMessage("");
         alert("Login successful");
-        setIsModalOpen(false); // Close modal after successful login
+        setIsModalOpen(false);
+        navigate("/Menu") // Close modal after successful login
     };
 
     const handleCreateAccount = () => {
