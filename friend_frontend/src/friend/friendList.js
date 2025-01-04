@@ -8,7 +8,7 @@ const FriendList = () => {
   useEffect(() => {
     const fetchFriends = async () => {
       try {
-        const response = await fetch('http://localhost:8080/members'); // 실제 API 경로로 변경
+        const response = await fetch('http://localhost:8080/members'); 
         const data = await response.json();
 
         // 모든 친구 상태를 'Disconnected'로 초기화
@@ -56,7 +56,7 @@ const FriendList = () => {
             className="friend-icon"
           />
           <span className="friend-nickname">{friend.nickname}</span>
-          <button
+          <button 
             className={`friend-status ${
               friend.status === 'Connected' ? 'connected' : 'disconnected'
             }`}
