@@ -27,6 +27,7 @@ const Login = () => {
                     nickname: username,
                     password: password,
                 }),
+                credentials:"include",
             });
             if(response.ok){
                 const data=await response.text();

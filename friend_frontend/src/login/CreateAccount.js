@@ -22,7 +22,7 @@ const CreateAccount = () => {
                     nickname: nickname,
                     email: email,
                     password: password,
-                    passwordcheck: passwordcheck,
+                    passwordCheck: passwordcheck,
                 }),
             });
 
