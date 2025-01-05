@@ -4,7 +4,8 @@ import CreateAccount from "./login/CreateAccount";
 import './App.css';
 import Menu from "./menu_bar/menu"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import FriendList from './friend/friendList';
+import FriendList from './friend/friendList.js';
+import Brain from "./brain/create_brain"
 
 function App(){
     return(
@@ -14,6 +15,7 @@ function App(){
                 <Route path="/create-account" element={<CreateAccount />} />
                 <Route path="/Home" element={<Menu />} />
                 <Route path="/friends" element={<FriendList />} />
+                <Route path="/MakeBrain" element={<Brain />} />
             </Routes>
         </Router>
     );

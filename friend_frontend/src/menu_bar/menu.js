@@ -1,13 +1,45 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './menu.css';
+import { useNavigate } from "react-router-dom";
 
 function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate=useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // const handleNavigation=(path)=>{
+  //   navigate(path);
+  // };
+
+  const logout=async (e)=>{
+    e.preventDefault();
+        // Add logic to handle account creation here
+        try{
+            const response= await fetch('http://localhost:8080/api/auth/logout', {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            if(response.ok){
+                const data= await response.text();
+                alert(data);
+                navigate('/');
+            }else{
+                const errorText=await response.text();
+                alert(errorText);
+            }
+        }catch(error){
+            alert('Please try again');
+        }
+  };
+
 
   return (
     <div className="app">
@@ -39,8 +71,9 @@ function Menu() {
           </li>
           <li>일정 관리</li>
           <li>뇌 공유</li>
+          <li>My</li>
         </ul>
-        <button className="logout">로그아웃</button>
+        <button className="logout" onClick={logout}>로그아웃</button>
       </nav>
 
       {/* 메인 콘텐츠 */}

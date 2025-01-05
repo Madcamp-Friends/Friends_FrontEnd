@@ -138,6 +138,9 @@
   .menu ul li:nth-child(4)::before {
     background-image: url('/public/assets/Brain.svg'); /* 뇌 아이콘 */
   }
+  .menu ul li:nth-child(5)::before{
+    background-image: url('/public/assets/My_logo.svg');
+  }
   /* 로그아웃 버튼 */
   .logout {
     margin-top: 20px;
