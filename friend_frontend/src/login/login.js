@@ -10,18 +10,38 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!password.trim() || !username.trim()) {
             setErrorMessage("Wrong username and password");
             return;
         }
-        console.log("Login:", { username, password });
-        setErrorMessage("");
-        alert("Login successful");
-        setIsModalOpen(false);
-        navigate("/Home")
+        try{
+            const response=await fetch("http://localhost:8080/api/auth/login", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    nickname: username,
+                    password: password,
+                }),
+                credentials:"include",
+            });
+            if(response.ok){
+                const data=await response.text();
+                alert(data);
+                setIsModalOpen(false);
+                navigate("/Home");
+            }else{
+                const errorText=await response.text();
+                setErrorMessage(errorText||"Invalid username or password");
+            }
+        } catch(error){
+            setErrorMessage("wrong");
+            console.error("Error:", error);
+        }
     };
 
     const handleCreateAccount = () => {
