@@ -1,44 +1,124 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './create_brain.css';
-// If you have a local brain image, import it like this:
-// import brainImage from './brain.png'; 
-// Otherwise, use an online image URL below in <img src="" />
 
 const Brain = () => {
-  const handleSave = () => {
-    // Handle saving logic here (e.g., post data to server)
-    console.log('Save clicked');
+  const [labels, setLabels] = useState([]); // Store labels
+  const [newLabel, setNewLabel] = useState(''); // Store new label input
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
+  const brainId = 1; // Assuming you have a specific BrainCreate ID to work with
+
+  // 🔄 Fetch labels from the backend when the component loads
+  useEffect(() => {
+    const fetchLabels = async () => {
+      try {
+        const response = await fetch(`/api/brains/{nickname}/labels`);
+        if (response.ok) {
+          const data = await response.json();
+          setLabels(data.labels);
+        } else {
+          console.error('Failed to fetch labels');
+        }
+      } catch (error) {
+        console.error('Error fetching labels:', error);
+      }
+    };
+
+    fetchLabels();
+  });
+
+  // ➕ Open the modal when the "+" button is clicked
+  const handleAddLabelClick = () => {
+    setIsModalOpen(true);
   };
 
-  const handleAdd = () => {
-    // Handle adding logic here (e.g., show a modal to input new #info)
-    console.log('Add clicked');
+  // ❌ Close the modal
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setNewLabel('');
+  };
+
+  // 💾 Save the new label to the backend
+  const handleSaveLabel = async () => {
+    if (!newLabel.trim()) {
+      alert('Label cannot be empty');
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/brains/${brainId}/labels_add}`, {
+        method: 'POST',
+        
+      });
+      if (response.ok) {
+        const updatedBrain = await response.json();
+        setLabels(updatedBrain.labels); // Update the labels in state
+        handleCloseModal(); // Close the modal after saving
+      } else {
+        console.error('Failed to save label');
+      }
+    } catch (error) {
+      console.error('Error saving label:', error);
+    }
   };
 
   return (
     <div className="brain-container">
       <div className="brain-image-wrap">
-        {/* 
-          Replace the src below with either:
-          - your local imported image: src={brainImage}
-          - or a public image URL 
-        */}
         <img
-          src="/brain_create.png"
+          src="/assets/Brain_NI.svg"
           alt="Brain"
           className="brain-image"
         />
+
+        {/* Render Labels */}
+        {labels.map((label, index) => (
+          <div
+            key={index}
+            className="label"
+            style={{
+              left: `${Math.random() * 80 + 10}%`,
+              top: `${Math.random() * 70 + 10}%`,
+            }}
+          >
+            {label}
+          </div>
+        ))}
       </div>
 
-      {/* Bottom-left "Save" button */}
-      <button className="save-button" onClick={handleSave}>
-        Save
-      </button>
-
-      {/* Bottom-right "Add" button (plus icon) */}
-      <button className="add-button" onClick={handleAdd}>
+      {/* Add Label Button */}
+      <button className="add-button" onClick={handleAddLabelClick}>
         +
       </button>
+
+      {/* Modal Dialog */}
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>Add New Label</h3>
+
+            {/* List of Existing Labels */}
+            <ul>
+              {labels.map((label, index) => (
+                <li key={index}>{label}</li>
+              ))}
+            </ul>
+
+            {/* Input Field for New Label */}
+            <input
+              type="text"
+              value={newLabel}
+              onChange={(e) => setNewLabel(e.target.value)}
+              placeholder="Enter new label"
+            />
+
+            {/* Save and Cancel Buttons */}
+            <div className="modal-buttons">
+              <button onClick={handleSaveLabel}>Save</button>
+              <button onClick={handleCloseModal}>Cancel</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
