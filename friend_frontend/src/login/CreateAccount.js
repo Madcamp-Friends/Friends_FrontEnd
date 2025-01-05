@@ -6,6 +6,7 @@ const CreateAccount = () => {
     const [nickname, setNickname] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [passwordcheck, setCheck]=useState('');
     const navigate=useNavigate();
 
     const handleCreate = async (e) => {
@@ -21,6 +22,7 @@ const CreateAccount = () => {
                     nickname: nickname,
                     email: email,
                     password: password,
+                    passwordcheck: passwordcheck,
                 }),
             });
 
@@ -71,6 +73,16 @@ const CreateAccount = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Enter password"
+                        required
+                    />
+                </div>
+                <div className="input-field">
+                    <label>PasswordCheck:</label>
+                    <input
+                        type="passwordcheck"
+                        value={passwordcheck}
+                        onChange={(e) => setCheck(e.target.value)}
+                        placeholder="Enter passwordcheck"
                         required
                     />
                 </div>

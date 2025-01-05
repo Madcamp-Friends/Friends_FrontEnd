@@ -41,11 +41,6 @@ const Login = () => {
             setErrorMessage("wrong");
             console.error("Error:", error);
         }
-        // console.log("Login:", { username, password });
-        // setErrorMessage("");
-        // alert("Login successful");
-        // setIsModalOpen(false);
-        // navigate("/Home")
     };
 
     const handleCreateAccount = () => {
