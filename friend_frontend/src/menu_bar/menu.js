@@ -71,7 +71,9 @@ function Menu() {
           </li>
           <li>일정 관리</li>
           <li>뇌 공유</li>
-          <li>My</li>
+          <li>
+            <Link to="/MyPage">My Page</Link>
+          </li>
         </ul>
         <button className="logout" onClick={logout}>로그아웃</button>
       </nav>
