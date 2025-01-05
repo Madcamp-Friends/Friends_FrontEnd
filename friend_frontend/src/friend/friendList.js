@@ -26,6 +26,34 @@ const FriendList = () => {
     fetchFriends();
   }, []);
 
+  const sendFriendRequest = async (fromId, toId) => {
+    try {
+      const response = await fetch('http://localhost:8080/friend/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ fromId, toId }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send friend request');
+      }
+      console.log(`✅ 친구 요청 성공: fromId=${fromId}, toId=${toId}`);
+
+      // 요청 성공 시 상태 변경
+      setFriends(prevFriends =>
+        prevFriends.map(friend =>
+          friend.id === toId
+            ? { ...friend, status: 'Connected' }
+            : friend
+        )
+      );
+    } catch (error) {
+      console.error('친구 요청 중 오류 발생:', error);
+    }
+  };
+
   // 버튼 클릭 시 상태 토글 함수
   const toggleStatus = (id) => {
     setFriends(prevFriends =>
