@@ -1,14 +1,49 @@
+.app {
+    display: flex;
+    flex-direction: column;
+  }
 
-
-.menu.ul.li:nth-child(1)::before {
-    background-image: url(); /* 홈 아이콘 */
+.MyMenuAll {
+    padding:50dp;
+}
+.Mymenu ul {
+    list-style: none;
+    padding: 0;
   }
   
-.menu ul li:nth-child(2)::before {
-background-image: url('/public/assets/Join.svg'); /* 친구 아이콘 */
-}
-
-.menu ul li:nth-child(3)::before {
-background-image: url('/public/assets/Calendar.svg'); /* 일정 아이콘 */
-}
+  .Mymenu li {
+    margin: 15px 0;
+    cursor: pointer;
+    font-size: 16px;
+  }
   
+  .Mymenu ul li {
+    display: flex; /* 아이콘과 텍스트를 나란히 배치 */
+    align-items: center; /* 수직 정렬 */
+    gap: 8px; /* 아이콘과 텍스트 사이 간격 */
+    margin: 10px 0; /* 각 메뉴 항목 간 간격 */
+    font-size: 16px;
+  }
+  
+  /* 아이콘 추가 */
+  .Mymenu ul li::before {
+    content: ''; /* 가상 요소 내용 */
+    display: inline-block; /* 아이콘이 공간을 차지하도록 설정 */
+    width: 24px; /* 아이콘 너비 */
+    height: 24px; /* 아이콘 높이 */
+    background-size: cover; /* 아이콘이 요소에 꽉 차도록 */
+    background-repeat: no-repeat; /* 반복 방지 */
+  }
+  
+  /* 각 항목에 아이콘 지정 */
+  .Mymenu ul li:nth-child(1)::before {
+    background-image: url('/public/assets/myInfo.svg'); 
+  }
+  
+  .Mymenu ul li:nth-child(2)::before {
+    background-image: url('/public/assets/myBrain.svg'); 
+  }
+  
+  .Mymenu ul li:nth-child(3)::before {
+    background-image: url('/public/assets/Friends.svg'); 
+  }

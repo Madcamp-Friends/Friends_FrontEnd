@@ -1,0 +1,13 @@
+.label {
+    position: absolute;
+    padding: 5px 10px;
+    background-color: rgba(100, 100, 255, 0.8); /* Semi-transparent purple background */
+    color: white;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    transform: translate(-50%, -50%); /* Center the label on the position */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
