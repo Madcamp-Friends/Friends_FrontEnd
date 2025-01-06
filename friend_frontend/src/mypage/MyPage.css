@@ -1,0 +1,14 @@
+
+
+.menu.ul.li:nth-child(1)::before {
+    background-image: url(); /* 홈 아이콘 */
+  }
+  
+.menu ul li:nth-child(2)::before {
+background-image: url('/public/assets/Join.svg'); /* 친구 아이콘 */
+}
+
+.menu ul li:nth-child(3)::before {
+background-image: url('/public/assets/Calendar.svg'); /* 일정 아이콘 */
+}
+  

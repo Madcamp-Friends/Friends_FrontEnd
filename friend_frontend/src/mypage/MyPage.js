@@ -27,7 +27,7 @@ const MyPage = () => {
           </header>
     
           {/* 메뉴 */}
-          <nav>
+          <nav className="menu">
             <ul>
               <li> <Link to="/MyInfo">나의 정보수정</Link>  </li>
               <li> <Link to="/MyBrain">나의 뇌</Link>  </li>
