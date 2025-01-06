@@ -29,8 +29,7 @@ const CreateAccount = () => {
             if(response.ok){
                 const data= await response.text();
                 alert(data);
-                createBrain();
-                navigate('/CreateBrain');
+                navigate('/MakeBrain');
             }else{
                 const errorText=await response.text();
                 alert(errorText);
@@ -41,26 +40,6 @@ const CreateAccount = () => {
     };
     const handleBackToLogin=()=>{
         navigate('/');
-    };
-    const createBrain = async () => {
-        // Add logic to handle account creation here
-        try{
-            const response= await fetch('http://localhost:8080/api/auth/brain', {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-
-            if(response.ok){
-                navigate('/MakeBrain')
-            }else{
-                const errorText=await response.text();
-                alert(errorText);
-            }
-        }catch(error){
-            alert('Please try again');
-        }
     };
 
     return (

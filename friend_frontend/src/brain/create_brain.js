@@ -3,15 +3,45 @@ import './create_brain.css';
 
 const Brain = () => {
   const [labels, setLabels] = useState([]); // Store labels
+  const [text, setText]=useState();
   const [newLabel, setNewLabel] = useState(''); // Store new label input
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
   const brainId = 1; // Assuming you have a specific BrainCreate ID to work with
 
-  // 🔄 Fetch labels from the backend when the component loads
+
+  useEffect(()=>{
+    const createBrain= async ()=>{
+      try{
+        const response=await fetch('http://localhost:8080/api/auth/brain',{
+          method: "POST",
+          credentials: 'include',
+          headers:{
+            "Content-Type": "application/json",
+          }
+        });
+        if(response.ok){
+          const data=await response.json();
+          setText(data);
+        }else{
+          console.error('Failed to create brain');
+        }
+      } catch(error){
+        console.error('Error fetching brain:',error);
+      }
+    };
+    createBrain();
+  },[]);
+
   useEffect(() => {
     const fetchLabels = async () => {
       try {
-        const response = await fetch(`/api/brains/{nickname}/labels`);
+        const response = await fetch('http://localhost:8080/api/auth/{nickname}/labels',{
+          method: "GET",
+          credentials: "include'",
+          headers:{
+            "Content-Type": "application/json",
+          }
+        });
         if (response.ok) {
           const data = await response.json();
           setLabels(data.labels);
@@ -23,8 +53,9 @@ const Brain = () => {
       }
     };
 
-    fetchLabels();
-  });
+    fetchLabels(); 
+  },[]);
+
 
   // ➕ Open the modal when the "+" button is clicked
   const handleAddLabelClick = () => {
