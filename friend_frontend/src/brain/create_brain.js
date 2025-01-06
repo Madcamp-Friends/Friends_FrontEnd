@@ -5,6 +5,7 @@ const Brain = () => {
   const [labels, setLabels] = useState([]); // Store labels
   const [newLabel, setNewLabel] = useState(''); // Store new label input
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
+  const [errorMessage, setErrorMessage]=useState(null);
 
   // ➕ Open the modal when the "+" button is clicked
   const handleAddLabelClick = () => {
@@ -18,12 +19,18 @@ const Brain = () => {
   };
 
   const handleAddNewLabel=()=>{
-    if(!newLabel.trim()){
-      alert('Label cannot be emtpy');
+    const trimmedLabel=newLabel.trim();
+    if(!trimmedLabel){
+      setErrorMessage('Label cannot be emtpy');
+      return;
+    }
+    if(labels.includes(trimmedLabel)){
+      setErrorMessage('Label already exists');
       return;
     }
     setLabels([...labels, newLabel]);
     setNewLabel('');
+    setErrorMessage(null);
   };
 
   // 💾 Save the new label to the backend
@@ -39,19 +46,14 @@ const Brain = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        alert(data);
-        setLabels(data.labelContent);
+        console.log("성공");
         handleCloseModal();
-        if(data){
-          console.log('Brain created:',data);
-          setLabels(data.topic.map((item)=>item.labelTopic));
-        }
+        
       } else {
         console.error('Failed to save label');
       }
     } catch (error) {
-      console.error('Error saving label:', error);
+      console.error('Error saving label:'+ errorMessage);
     }
   };
 
