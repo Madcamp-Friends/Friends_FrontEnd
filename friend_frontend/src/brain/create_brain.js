@@ -1,61 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './create_brain.css';
 
 const Brain = () => {
   const [labels, setLabels] = useState([]); // Store labels
-  const [text, setText]=useState();
   const [newLabel, setNewLabel] = useState(''); // Store new label input
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
-  const brainId = 1; // Assuming you have a specific BrainCreate ID to work with
-
-
-  useEffect(()=>{
-    const createBrain= async ()=>{
-      try{
-        const response=await fetch('http://localhost:8080/api/auth/brain',{
-          method: "POST",
-          credentials: 'include',
-          headers:{
-            "Content-Type": "application/json",
-          }
-        });
-        if(response.ok){
-          const data=await response.json();
-          setText(data);
-        }else{
-          console.error('Failed to create brain');
-        }
-      } catch(error){
-        console.error('Error fetching brain:',error);
-      }
-    };
-    createBrain();
-  },[]);
-
-  useEffect(() => {
-    const fetchLabels = async () => {
-      try {
-        const response = await fetch('http://localhost:8080/api/auth/{nickname}/labels',{
-          method: "GET",
-          credentials: "include'",
-          headers:{
-            "Content-Type": "application/json",
-          }
-        });
-        if (response.ok) {
-          const data = await response.json();
-          setLabels(data.labels);
-        } else {
-          console.error('Failed to fetch labels');
-        }
-      } catch (error) {
-        console.error('Error fetching labels:', error);
-      }
-    };
-
-    fetchLabels(); 
-  },[]);
-
 
   // ➕ Open the modal when the "+" button is clicked
   const handleAddLabelClick = () => {
@@ -68,22 +17,36 @@ const Brain = () => {
     setNewLabel('');
   };
 
-  // 💾 Save the new label to the backend
-  const handleSaveLabel = async () => {
-    if (!newLabel.trim()) {
-      alert('Label cannot be empty');
+  const handleAddNewLabel=()=>{
+    if(!newLabel.trim()){
+      alert('Label cannot be emtpy');
       return;
     }
+    setLabels([...labels, newLabel]);
+    setNewLabel('');
+  };
 
+  // 💾 Save the new label to the backend
+  const handleSaveBrain = async () => {
     try {
-      const response = await fetch(`/api/brains/${brainId}/labels_add}`, {
+      const response = await fetch('http://localhost:8080/brain/create', {
         method: 'POST',
-        
+        credentials: 'include',
+        headers:{
+          'Content-Type': 'application/json',
+        },
+        body:JSON.stringify({labelContent: labels}),
       });
+
       if (response.ok) {
-        const updatedBrain = await response.json();
-        setLabels(updatedBrain.labels); // Update the labels in state
-        handleCloseModal(); // Close the modal after saving
+        const data = await response.json();
+        alert(data);
+        setLabels(data.labelContent);
+        handleCloseModal();
+        if(data){
+          console.log('Brain created:',data);
+          setLabels(data.topic.map((item)=>item.labelTopic));
+        }
       } else {
         console.error('Failed to save label');
       }
@@ -141,10 +104,11 @@ const Brain = () => {
               onChange={(e) => setNewLabel(e.target.value)}
               placeholder="Enter new label"
             />
+            <button onClick={handleAddNewLabel}>Add Label</button>
 
             {/* Save and Cancel Buttons */}
             <div className="modal-buttons">
-              <button onClick={handleSaveLabel}>Save</button>
+              <button onClick={handleSaveBrain}>Save</button>
               <button onClick={handleCloseModal}>Cancel</button>
             </div>
           </div>
