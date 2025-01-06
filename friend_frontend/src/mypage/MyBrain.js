@@ -73,8 +73,8 @@ const MyBrain = () => {
             key={index}
             className="label"
             style={{
-              left: `${Math.random() * 80 + 10}%`,
-              top: `${Math.random() * 70 + 10}%`,
+              left: `${Math.random() * 40 + 5}%`,
+              top: `${Math.random() * 40 + 5}%`,
             }}
           >
             {label.labelTopic}
