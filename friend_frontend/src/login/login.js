@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './login.css';
 import { useNavigate } from "react-router-dom";
 
@@ -6,9 +6,16 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [showLogoAnimation, setShowLogoAnimation]=useState(false);
+    const [showButtons, setShowButtons]=useState(false);
 
     const navigate = useNavigate();
+    // eslint-disable-next-line no-undef
+    useEffect(()=>{
+        setTimeout(()=>setShowLogoAnimation(true),500);
+        setTimeout(()=>setShowButtons(true),2500);
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -57,45 +64,59 @@ const Login = () => {
     };
 
     return (
-        <div className="Login">
-            <h2>Login</h2>
-            <button onClick={openModal}>Login</button>
-            <button type="button" onClick={handleCreateAccount}>CreateAccount</button>
-
-            {/* Modal for login form */}
-            {isModalOpen && (
-                <div className="modal-overlay">
-                    <div className="modal-content">
-                        <h3>Login</h3>
-                        {errorMessage && <p className="error-message">{errorMessage}</p>}
-                        <form onSubmit={handleSubmit}>
-                            <div className="input-field">
-                                <label>Username:</label>
-                                <input
-                                    type="text"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
-                                    placeholder="Enter username"
-                                    required
-                                />
-                            </div>
-                            <div className="input-field">
-                                <label>Password:</label>
-                                <input
-                                    type="password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    placeholder="Enter password"
-                                    required
-                                />
-                            </div>
-                            <button type="submit">Login</button>
-                            <button type="button" onClick={closeModal}>Cancel</button>
-                        </form>
-                    </div>
+        <div className={`Login ${showLogoAnimation ? "show-logo" : ""}`}>
+            <div className="logo-container">
+                <img
+                    src="/assets/logo.png"
+                    alt="Logo"
+                    className="logo"
+                />
+                <h1 className="website-name">되어줘</h1>
+                <h1 className="sub-name">뇌 친구~</h1>
+            </div>
+            {showButtons&&(
+                <div className="button-container">
+                    <button onClick={openModal}>Login</button>
+                    <button type="button" onClick={handleCreateAccount}>Create Account</button>
                 </div>
             )}
-        </div>
+
+        {/* Modal for login form */}
+        {isModalOpen && (
+            <div className="modal-overlay">
+                <div className="modal-content">
+                    <h3>Login</h3>
+                    {errorMessage && <p className="error-message">{errorMessage}</p>}
+                    <form onSubmit={handleSubmit}>
+                        <div className="input-field">
+                            <label>사용자 이름:</label>
+                            <input
+                                type="text"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                placeholder="Enter username"
+                                required
+                            />
+                        </div>
+
+                        <div className="input-field">
+                            <label>비밀번호:</label>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Enter password"
+                                required
+                            />
+                        </div>
+
+                        <button type="submit">로그인</button>
+                        <button type="button" onClick={closeModal}>취소</button>
+                    </form>
+                </div>
+            </div>
+        )}
+    </div>
     );
 };
 

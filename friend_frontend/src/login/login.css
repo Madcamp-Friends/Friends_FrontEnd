@@ -1,53 +1,198 @@
-/* Style for the Login component */
-.Login {
-    text-align: center;
+/* Modal Overlay */
+.Login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f3f4f6;
+    position: relative;
 }
 
-button {
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(150px);
+    transition: all 1s ease-out;
+}
+
+.show-logo .logo-container {
+    opacity: 1;
+    transform: translateY(0);
+}
+.show-logo .logo-container{
+    transition: all 2s ease-in-out;
+    transform: translateY(-100px);
+}
+
+.logo {
+    width: 500px;
+    height: 500px;
+    margin-bottom: 20px;
+}
+
+.website-name {
+    font-size: 36px;
+    color: #333;
+    opacity: 0;
+    transition: opacity 1s ease-out 2s;
+}
+
+.show-logo .website-name{
+    opacity:1;
+}
+
+.sub-name{
+    font-size: 36px;
+    color: #333;
+    opacity: 0;
+    transition: opacity 1s ease-out 4s;
+
+}
+
+.show-logo .sub-name{
+    opacity:1;
+}
+
+/* Button Styling (Login and Create Account) */
+.button-container button {
+    width: 200px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
     margin: 10px;
 }
 
-/* Modal overlay */
+/* Hover Effect */
+.button-container button:hover {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Button Active (Pressed) Effect */
+.button-container button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+.show-logo .button-container {
+    opacity: 1;
+} 
+
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 9999;
 }
 
-/* Modal content */
+/* Modal Content (Form Box) */
 .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    text-align: left;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: #e8d6f3; /* Light purple background */
+    padding: 32px;
+    width: 400px;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.modal-content h3 {
+    font-size: 28px;
+    color: #4b2b75;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Input Fields */
 .input-field {
-    margin-bottom: 10px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
-button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border: none;
-    width: 100%;
+.input-field label {
+    font-size: 16px;
+    color: #4b2b75; 
+    margin-bottom: 8px;
+    display: block;
+    font-family: 'Poppins', sans-serif;
 }
 
-button[type="button"] {
-    background-color: #f44336;
-    color: white;
-    padding: 10px;
-    border: none;
+.input-field input {
     width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 2px solid #b488d3; /* Soft purple border */
+    border-radius: 12px;
+    background-color: #f7eefb; /* Slightly lighter purple background */
+    color: #4b2b75;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+}
+
+.input-field input:focus {
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Login Button */
+.modal-content button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content button[type="submit"]:hover {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Cancel Button */
+.modal-content button[type="button"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
     margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content button[type="button"]:hover {
+    background-color: #f3f4f6;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
