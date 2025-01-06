@@ -75,6 +75,18 @@
     transition: transform 0.3s ease-in-out;
     z-index: 1000;
   }
+
+  /* Link 스타일 초기화 */
+    a {
+    text-decoration: none; /* 밑줄 제거 */
+    color: inherit; /* 부모 요소의 글자색 상속 */
+    }
+
+    /* 호버 시에도 밑줄 제거 */
+    a:hover {
+    text-decoration: none;
+    }
+
   
   .menu.open {
     transform: translateX(0);
