@@ -199,12 +199,6 @@ const MyFriendList = () => {
               className="friend-icon"
             />
             <span className="friend-nickname">{friend.nickname}</span>
-            {/* <button 
-              className="friend-status connected"
-              disabled
-            >
-              Friend
-            </button> */}
             <button 
               className="friend-status connected"
               onClick={() => endFriend(friend.id)}
