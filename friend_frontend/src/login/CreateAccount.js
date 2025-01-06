@@ -29,7 +29,7 @@ const CreateAccount = () => {
             if(response.ok){
                 const data= await response.text();
                 alert(data);
-                navigate('/Home');
+                navigate('/MakeBrain');
             }else{
                 const errorText=await response.text();
                 alert(errorText);
