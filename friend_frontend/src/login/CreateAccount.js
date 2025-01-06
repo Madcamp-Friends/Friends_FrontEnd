@@ -29,7 +29,7 @@ const CreateAccount = () => {
             if(response.ok){
                 const data= await response.text();
                 alert(data);
-                navigate('/MakeBrain');
+                navigate("/")
             }else{
                 const errorText=await response.text();
                 alert(errorText);
@@ -41,7 +41,18 @@ const CreateAccount = () => {
     const handleBackToLogin=()=>{
         navigate('/');
     };
-
+    // const createempty=async(e)=>{
+    //     e.preventDefault;
+    //     try{
+    //         const response=await fetch("http:://localhost:8080/brain/create",{
+    //             method: 'POST',
+    //             headers:{
+    //                 ""
+    //             }
+    //         })
+    //     }
+    // }
+    
     return (
         <div className="create-account">
             <h2>Create Account</h2>

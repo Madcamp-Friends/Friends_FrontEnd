@@ -36,24 +36,28 @@ const Brain = () => {
   // 💾 Save the new label to the backend
   const handleSaveBrain = async () => {
     try {
-      const response = await fetch('http://localhost:8080/brain/create', {
-        method: 'POST',
-        credentials: 'include',
+      const response = await fetch("http://localhost:8080/brain/create", {
+        method: "POST",
         headers:{
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body:JSON.stringify({labelContent: labels}),
+        credentials: 'include',
+        body:JSON.stringify({
+          labelContent: labels
+        }),
       });
 
+      console.log("Response status:",response.status);
+
       if (response.ok) {
-        console.log("성공");
         handleCloseModal();
-        
-      } else {
-        console.error('Failed to save label');
+      } 
+      else {
+        const data=await response.json();
+        setErrorMessage(data.message);
       }
     } catch (error) {
-      console.error('Error saving label:'+ errorMessage);
+      console.error('Error saving label:',error);
     }
   };
 
@@ -119,5 +123,4 @@ const Brain = () => {
     </div>
   );
 };
-
 export default Brain;
