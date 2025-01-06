@@ -1,70 +1,110 @@
-.CreateAccount {
+/* Main Form Container */
+.create-account {
     width: 100%;
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 32px;
+    background-color: #e8d6f3;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-.CreateAccount h2 {
+/* Form Title (Centered) */
+.create-account h2 {
     text-align: center;
-    margin-bottom: 20px;
+    font-size: 28px;
+    color: #4b2b75;
+    margin-bottom: 24px;
 }
 
+/* Input Fields */
 .input-field {
-    margin-bottom: 15px;
-}
-
-.input-field label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .input-field input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 16px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    background-color: #f7eefb;
+    color: #4b2b75;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
 }
 
+.input-field label{
+    width: 100%;
+    font-size: 16px;
+    color: #4b2b75;
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+}
+
+/* Input Focus Effect */
 .input-field input:focus {
     outline: none;
-    border-color: #6a11cb;
-    box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Submit Button (Aligned with Back to Login Button) */
 button[type="submit"] {
     width: 100%;
-    padding: 10px;
-    background: #6a11cb;
+    max-width: 600px; /* Set a maximum width for larger screens */
+    padding: 16px; /* Increased padding for a larger button */
+    font-size: 15px; /* Larger font size for better visibility */
+    background-color: #b488d3;
     color: white;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 8px;
+    margin-bottom: 20px
 }
 
+/* Hover Effect for Submit Button */
 button[type="submit"]:hover {
-    background: #2575fc;
+    background-color: #a075c4;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Back to Login Button (Aligned) */
 .back-to-login-button {
-    margin-top: 20px;
-    padding: 10px 20px;
+    width: 35%;
+    padding: 12px;
+    background-color: transparent;
+    color: #4b2b75;
+    border: 2px solid #b488d3;
+    border-radius: 12px;
     font-size: 16px;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
 }
 
+/* Hover Effect for Back to Login Button */
 .back-to-login-button:hover {
-    background-color: #0056b3;
+    background-color: #f7eefb;
+    color: #333;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
