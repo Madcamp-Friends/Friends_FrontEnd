@@ -118,6 +118,31 @@ const MyFriendList = () => {
     }
   };
 
+  // ✅ 5. FRIEND 정리하기
+  const endFriend = async (toId) => {
+    try {
+      const response = await fetch('http://localhost:8080/friend/endFriend', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ toId }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to end friend');
+      }
+
+      console.log(`✅ 친구 끊기 성공: toId=${toId}`);
+
+      // 친구 목록에서 제거
+      setFriendList(prevFriends => prevFriends.filter(friend => friend.id !== toId));
+    } catch (error) {
+      console.error('❌ 친구 끊기 중 오류 발생:', error);
+    }
+  };
+
   // ✅ 5. 상태 토글 함수
   const toggleStatus = (friend) => {
     if (friend.status === 'Connecting') {
@@ -139,9 +164,9 @@ const MyFriendList = () => {
       </div>
 
       {/* ✅ PENDING 친구 목록 */}
-      <h3>나에게 친구 요청한 사용자</h3>
+      <h3>📭 나에게 친구 요청한 사용자</h3>
       {pendingFriends.length === 0 ? (
-        <p>PENDING 친구 목록이 없습니다.</p>
+        <p>아직 아무도 나에게 친구를 요청하지 않았어요! <br/> 새로운 친구를 만들봐요:D </p>
       ) : (
         pendingFriends.map((friend) => (
           <div key={friend.id} className="friend-item">
@@ -162,9 +187,9 @@ const MyFriendList = () => {
       )}
 
       {/* ✅ FRIEND 친구 목록 */}
-      <h3>나와 친구 관계인 친구</h3>
+      <h3>👤 나와 친구 관계인 친구</h3>
       {friendList.length === 0 ? (
-        <p>FRIEND 친구 목록이 없습니다.</p>
+        <p>친구 요청한 </p>
       ) : (
         friendList.map((friend) => (
           <div key={friend.id} className="friend-item">
@@ -174,9 +199,15 @@ const MyFriendList = () => {
               className="friend-icon"
             />
             <span className="friend-nickname">{friend.nickname}</span>
-            <button 
+            {/* <button 
               className="friend-status connected"
               disabled
+            >
+              Friend
+            </button> */}
+            <button 
+              className="friend-status connected"
+              onClick={() => endFriend(friend.id)}
             >
               Friend
             </button>
