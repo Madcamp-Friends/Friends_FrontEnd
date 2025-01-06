@@ -11,10 +11,6 @@ function Menu() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // const handleNavigation=(path)=>{
-  //   navigate(path);
-  // };
-
   const logout=async (e)=>{
     e.preventDefault();
         // Add logic to handle account creation here
@@ -70,7 +66,7 @@ function Menu() {
             <Link to="/friends">친구 맺기</Link>
           </li>
           <li>일정 관리</li>
-          <li>뇌 공유</li>
+          <li> <Link to ="/share-brain">뇌 공유</Link> </li>
           <li>
             <Link to="/MyPage">My Page</Link>
           </li>
