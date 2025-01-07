@@ -10,6 +10,7 @@ import MyPage from "./mypage/MyPage.js"
 import MyInfo from "./mypage/MyInfo.js"
 import MyFriendList from "./mypage/MyFriends.js"
 import MyBrain from "./mypage/MyBrain.js"
+import Settings from "./editinfo/EditInfo.js"
 
 function App(){
     return(
@@ -26,6 +27,7 @@ function App(){
                 <Route path="/MyBrain" element={<MyBrain />} />
                 <Route path="/MyInfo" element={<MyInfo />} />
                 <Route path="/MyPage" element={<MyPage />} />
+                <Route path="/MySetting" element={<Settings />} />
             </Routes>
         </Router>
     );
