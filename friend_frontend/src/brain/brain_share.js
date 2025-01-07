@@ -302,7 +302,7 @@ const Brain_Share = () => {
 
       {/* 뇌 이미지 및 라벨 영역 */}
       <div className="brain-info-container">
-        <div className="brain-image-wrap">
+        <div className="brain-image-rap">
           <img
             src="/assets/Brain_NI.svg"
             alt="Brain"
