@@ -47,7 +47,7 @@ function Menu() {
             ☰
           </button>
           {/* 앱 이름 */}
-          <span className="app-name">My App</span>
+          <span className="app-name">Connect Your Synapse</span>
         </div>
 
         <div className="header-right">
@@ -65,7 +65,6 @@ function Menu() {
           <li>
             <Link to="/friends">친구 맺기</Link>
           </li>
-          <li>일정 관리</li>
           <li> <Link to ="/share-brain">뇌 공유</Link> </li>
           <li>
             <Link to="/MyPage">My Page</Link>

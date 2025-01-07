@@ -18,8 +18,8 @@ const MyFriendList = () => {
           throw new Error('로그인 정보 불러오기 실패');
         }
 
-        const nickname = await response.text();
-        setCurrentUser(nickname);
+        const data = await response.json()
+        setCurrentUser(data);
       } catch (error) {
         console.error('현재 사용자 정보 불러오기 실패:', error);
       }
@@ -157,16 +157,16 @@ const MyFriendList = () => {
       {/* ✅ 현재 사용자 닉네임 표시 */}
       <div className="current-user">
         {currentUser ? (
-          <p>현재 사용자: {currentUser}</p>
+          <p>현재 사용자: {currentUser.nickname+"님"}</p>
         ) : (
           <p>사용자 정보를 불러오는 중...</p>
         )}
       </div>
 
       {/* ✅ PENDING 친구 목록 */}
-      <h3>📭 나에게 친구 요청한 사용자</h3>
+      <h3>📭 신경 연결 중.. </h3>
       {pendingFriends.length === 0 ? (
-        <p>아직 아무도 나에게 친구를 요청하지 않았어요! <br/> 새로운 친구를 만들봐요:D </p>
+        <p>아직 아무도 나에게 친구를 요청하지 않았어요! <br/> 새로운 친구를 만들어볼까요?! </p>
       ) : (
         pendingFriends.map((friend) => (
           <div key={friend.id} className="friend-item">
@@ -187,9 +187,9 @@ const MyFriendList = () => {
       )}
 
       {/* ✅ FRIEND 친구 목록 */}
-      <h3>👤 나와 친구 관계인 친구</h3>
+      <h3>👤 뇌 친구</h3>
       {friendList.length === 0 ? (
-        <p>친구 요청한 </p>
+        <p>까먹기 전에 연결을 해봐요:D</p>
       ) : (
         friendList.map((friend) => (
           <div key={friend.id} className="friend-item">

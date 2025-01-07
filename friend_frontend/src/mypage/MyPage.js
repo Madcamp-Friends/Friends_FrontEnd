@@ -67,14 +67,11 @@ const MyPage = () => {
           {/* 메뉴 */}
           <nav className={`menu ${isMenuOpen ? 'open' : ''}`}>
         <ul>
-          <li>
-            <button onClick={() => handleMenuClick('/')}>홈 화면</button>
+        <li>
+            <button onClick={() => handleMenuClick('/Home')}>홈 화면</button>
           </li>
           <li>
             <button onClick={() => handleMenuClick('/friends')}>친구 맺기</button>
-          </li>
-          <li>
-            <button onClick={() => handleMenuClick('/schedule')}>일정 관리</button>
           </li>
           <li>
             <button onClick={() => handleMenuClick('/share-brain')}>뇌 공유</button>
@@ -92,7 +89,7 @@ const MyPage = () => {
         <div className="MyMenuAll">
           <nav className="Mymenu">
             <ul>
-              <li> <Link to="/MyInfo">나의 정보수정</Link>  </li>
+              <li> <Link to="/MyInfo">나의 정보</Link>  </li>
               <li> <Link to="/MyBrain">나의 뇌</Link>  </li>
               <li> <Link to="/MyfriendList">친구 신청 관리</Link> </li>
             </ul>
