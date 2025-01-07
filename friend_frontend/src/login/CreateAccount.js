@@ -90,7 +90,7 @@ const CreateAccount = () => {
                 <div className="input-field">
                     <label>PasswordCheck:</label>
                     <input
-                        type="passwordcheck"
+                        type="password"
                         value={passwordcheck}
                         onChange={(e) => setCheck(e.target.value)}
                         placeholder="Enter passwordcheck"
