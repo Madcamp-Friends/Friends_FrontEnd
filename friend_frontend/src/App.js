@@ -10,6 +10,7 @@ import MyPage from "./mypage/MyPage.js"
 import MyInfo from "./mypage/MyInfo.js"
 import MyFriendList from "./mypage/MyFriends.js"
 import MyBrain from "./mypage/MyBrain.js"
+import Settings from "./editinfo/EditInfo.js"
 import Brain_Share from "./brain/brain_share.js";
 
 function ProtectedLayout(){
@@ -38,11 +39,13 @@ function App(){
                 <Route path="/MyFriendList" element={<MyFriendList />} />
                 <Route path="/share-brain" element={<Brain_Share />}/>
                 <Route path="/MyBrain" element={<MyBrain />} />
-                <Route path="/MyInfo" element={<MyInfo />} />
                 <Route path="/MyPage" element={<MyPage />} />
-            </Route>
-        </Routes>
-    </Router>
+                <Route path="/MySetting" element={<Settings />} />
+
+                </Route>
+            </Routes>
+        </Router>
     );
+
 }
 export default App;
