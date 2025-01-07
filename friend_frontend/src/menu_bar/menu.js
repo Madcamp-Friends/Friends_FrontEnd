@@ -11,6 +11,14 @@ function Menu() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleMenuClick = (path) => {
+    // 메뉴를 닫고 애니메이션이 끝난 후 페이지 이동
+    setIsMenuOpen(false);
+    setTimeout(() => {
+      navigate(path);
+    }, 300); // CSS 애니메이션 시간 (0.3s 기준)
+  };
+
   const logout=async (e)=>{
     e.preventDefault();
         // Add logic to handle account creation here
@@ -61,14 +69,10 @@ function Menu() {
       {/* 메뉴 */}
       <nav className={`menu ${isMenuOpen ? 'open' : ''}`}>
         <ul>
-          <li>홈 화면</li>
-          <li>
-            <Link to="/friends">친구 맺기</Link>
-          </li>
-          <li> <Link to ="/share-brain">뇌 공유</Link> </li>
-          <li>
-            <Link to="/MyPage">My Page</Link>
-          </li>
+          <li> <button onClick={() => handleMenuClick('/Home')}>홈 화면</button></li>
+          <li> <button onClick={() => handleMenuClick('/friends')}>친구 맺기</button> </li>
+          <li> <button onClick={() => handleMenuClick('/share-brain')}>뇌 공유</button> </li>
+          <li> <button onClick={() => handleMenuClick('/MyPage')}>My Page</button> </li>
         </ul>
         <button className="logout" onClick={logout}>로그아웃</button>
       </nav>
