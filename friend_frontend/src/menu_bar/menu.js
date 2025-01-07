@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './menu.css';
 import { useNavigate } from "react-router-dom";
 
-function Menu() {
+function Menu({children}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate=useNavigate();
 
@@ -79,7 +79,7 @@ function Menu() {
 
       {/* 메인 콘텐츠 */}
       <div className={`content ${isMenuOpen ? 'menu-open' : ''}`}>
-        <h1>메인 콘텐츠 영역</h1>
+       {children}
       </div>
     </div>
   );
