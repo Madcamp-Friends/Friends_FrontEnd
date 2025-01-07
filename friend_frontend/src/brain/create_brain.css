@@ -49,3 +49,27 @@
   cursor: pointer;
   border-radius: 8px;
 }
+
+/* Right-bottom corner button styling */
+.navigate-button {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  background-color: #4caf50; /* Match the green color from .add-button */
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Match shadow style */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for the button */
+.navigate-button:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
+  transform: scale(1.05); /* Subtle scaling effect */
+}
+

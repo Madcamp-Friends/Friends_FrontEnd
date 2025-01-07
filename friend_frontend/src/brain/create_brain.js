@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './create_brain.css';
+import {useNavigate} from 'react-router-dom';
 
 const Brain = () => {
   const [labels, setLabels] = useState([]); // Store labels
   const [newLabel, setNewLabel] = useState(''); // Store new label input
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
   const [errorMessage, setErrorMessage]=useState(null);
+
+  const navigate=useNavigate();
 
   // ➕ Open the modal when the "+" button is clicked
   const handleAddLabelClick = () => {
@@ -60,6 +63,10 @@ const Brain = () => {
       console.error('Error saving label:',error);
     }
   };
+
+  const handleNavigate=()=>{
+    navigate('/Home');
+  }
 
   return (
     <div className="brain-container">
@@ -120,6 +127,9 @@ const Brain = () => {
           </div>
         </div>
       )}
+      <button className="navigate-button" onClick={handleNavigate}>
+        홈
+      </button>
     </div>
   );
 };
