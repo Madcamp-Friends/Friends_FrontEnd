@@ -27,7 +27,6 @@ function App(){
                 <Route path="/MyFriendList" element={<MyFriendList />} />
                 <Route path="/share-brain" element={<Brain_Share />}/>
                 <Route path="/MyBrain" element={<MyBrain />} />
-                <Route path="/MyInfo" element={<MyInfo />} />
                 <Route path="/MyPage" element={<MyPage />} />
                 <Route path="/MySetting" element={<Settings />} />
             </Routes>
