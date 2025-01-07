@@ -7,22 +7,28 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #1c1c1c; /* Dark background for contrast */
+  background-color: #1c1c1c;
+  overflow: auto; /* Dark background for contrast */
 }
 
 /* Wrap for the brain image so it can be sized or positioned if needed */
 .brain-image-wrap {
   position: relative;
-  display: inline-block;
+  width: 60vw; /* Dynamically adjust width based on screen size */
+  max-width: 800px; /* Maximum width for larger screens */
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Brain image styling */
 .brain-image {
-  width: 40vw;
-  max-width: 500px;
+  width: 100%;
   height: auto;
-  display: block;
+  max-height: 90vh;
 }
+
 
 /* Floating label styling */
 .label {
@@ -45,7 +51,7 @@
   color: white;
   border: none;
   padding: 10px 15px;
-  font-size: 16px;
+  font-size: 30px;
   cursor: pointer;
   border-radius: 8px;
 }
@@ -73,3 +79,103 @@
   transform: scale(1.05); /* Subtle scaling effect */
 }
 
+/* First Time Screen Overlay */
+.first-time-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* First Time Screen Content */
+.first-time-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.first-time-content h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* First Time Screen Overlay */
+.first-time-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Fade-Out Animation */
+.fade-out {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* First Time Screen Image */
+.first-time-image-wrap {
+  margin-bottom: 20px;
+}
+
+.first-time-image {
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* First Time Screen Content */
+.first-time-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.first-time-content h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.first-time-content button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.first-time-content button:hover {
+  background-color: #45a049;
+}

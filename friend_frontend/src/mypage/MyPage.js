@@ -89,7 +89,7 @@ const MyPage = () => {
         <div className="MyMenuAll">
           <nav className="Mymenu">
             <ul>
-              <li> <Link to="/MyInfo">나의 정보</Link>  </li>
+              <li> <Link to="/MySetting">나의 정보</Link>  </li>
               <li> <Link to="/MyBrain">나의 뇌</Link>  </li>
               <li> <Link to="/MyfriendList">친구 신청 관리</Link> </li>
             </ul>
