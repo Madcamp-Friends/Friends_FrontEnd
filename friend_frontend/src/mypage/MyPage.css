@@ -5,6 +5,8 @@
 
 .MyMenuAll {
     padding:50dp;
+    left : 7%;
+    position: absolute;
 }
 .Mymenu ul {
     list-style: none;
@@ -20,9 +22,9 @@
   .Mymenu ul li {
     display: flex; /* 아이콘과 텍스트를 나란히 배치 */
     align-items: center; /* 수직 정렬 */
-    gap: 8px; /* 아이콘과 텍스트 사이 간격 */
-    margin: 10px 0; /* 각 메뉴 항목 간 간격 */
-    font-size: 16px;
+    gap: 10px; /* 아이콘과 텍스트 사이 간격 */
+    margin: 20px 0; /* 각 메뉴 항목 간 간격 */
+    font-size: 20px;
   }
   
   /* 아이콘 추가 */
@@ -63,3 +65,30 @@
   .menu ul li button:hover {
     text-decoration: underline; /* 호버 시 밑줄 표시 */
   }
+
+  /* ✅ 전체 이미지 + 텍스트 컨테이너 */
+.imageAndText {
+  display: flex; /* Flexbox 사용 */
+  flex-direction: column; /* 세로 정렬 */
+  align-items: center; /* 가로축 중앙 정렬 */
+  justify-content: center; /* 세로축 중앙 정렬 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  gap: 10px; /* 이미지와 텍스트 사이의 간격 */
+  margin: 50px auto; /* 화면 중앙 정렬 및 여백 */
+}
+
+/* ✅ 이미지 스타일 */
+.brain_friendLOGO {
+  width: 300px;
+  height: 300px;
+  object-fit: cover; /* 이미지 비율 유지 */
+  border-radius: 15px; /* 이미지에 둥근 모서리 적용 */
+}
+
+/* ✅ 텍스트 스타일 */
+.imageAndText p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin: 0; /* 여백 제거 */
+}

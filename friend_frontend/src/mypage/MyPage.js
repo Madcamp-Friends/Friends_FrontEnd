@@ -10,13 +10,7 @@ const MyPage = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleMenuClick = (path) => {
-    // 메뉴를 닫고 애니메이션이 끝난 후 페이지 이동
-    setIsMenuOpen(false);
-    setTimeout(() => {
-      navigate(path);
-    }, 300); // CSS 애니메이션 시간 (0.3s 기준)
-  };
+
 
   const logout=async (e)=>{
     e.preventDefault();
@@ -57,13 +51,15 @@ const MyPage = () => {
             </ul>
           </nav>
         </div>
-          
-          
+        
+        <div className="imageAndText">
+        <p>나의 정보를 수정해주세요~!!</p>
+        <img src = "/assets/뇌진구.png" className="brain_friendLOGO"></img>
+        
         </div>
         
-
-
-
-      );
+          
+      </div>
+    );
 };
 export default MyPage;
