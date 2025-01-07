@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './create_brain.css';
 import {useNavigate} from 'react-router-dom';
 
@@ -7,6 +7,9 @@ const Brain = () => {
   const [newLabel, setNewLabel] = useState(''); // Store new label input
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
   const [errorMessage, setErrorMessage]=useState(null);
+  const [isnewModalOpen, setIsNewModalOpen]=useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
+  const [labePositions, setLabelPositions]=useState({});
 
   const navigate=useNavigate();
 
@@ -14,6 +17,22 @@ const Brain = () => {
   const handleAddLabelClick = () => {
     setIsModalOpen(true);
   };
+
+  // useEffect(()=>{
+  //   if(newLabel.length>0){
+  //     const initialPostion={};
+  //     const totalLabels=newLabel.length;
+  //     const radius=80;
+  //     newLabel.forEach((label,index)=>{
+  //       const angle=(index/totalLabels)*2*Math.PI;
+  //       initialPostion[label.labelId]={
+  //         left: `calc(50% +${radius*Math.cos(angle)}px)`,
+  //         top: `calc(50%+${radius+Math.sin(angle)}px)`,
+  //       };
+  //     });
+  //     setLabelPositions(initialPostion);
+  //   }
+  // },[labels]);
 
   // ❌ Close the modal
   const handleCloseModal = () => {
@@ -38,6 +57,19 @@ const Brain = () => {
 
   // 💾 Save the new label to the backend
   const handleSaveBrain = async () => {
+    if(labels.length>0){
+      const initialPostion={};
+      const totalLabels=labels.length;
+      const radius=150;
+      labels.forEach((label,index)=>{
+        const angle=(index/totalLabels)*2*Math.PI;
+        initialPostion[label.labelId]={
+          left: `calc(50% +${radius*Math.cos(angle)}px)`,
+          top: `calc(50%+${radius+Math.sin(angle)}px)`,
+        };
+      });
+      setLabelPositions(initialPostion);
+    }
     try {
       const response = await fetch("http://localhost:8080/brain/create", {
         method: "POST",
@@ -64,12 +96,33 @@ const Brain = () => {
     }
   };
 
+  const handleFristTimeYes=()=>{
+    setFadeOut(true);
+    setTimeout(()=>{
+      setIsNewModalOpen(false);
+    },1000);
+  }
+
   const handleNavigate=()=>{
     navigate('/Home');
   }
 
   return (
     <div className="brain-container">
+    {isnewModalOpen&&(
+      <div className="first-time-overlay ${fadeOut? 'fade-out': ''}">
+        <div className="first-time-image-wrap">
+          <img src="/뇌진구.png" alt="Welcome" className="first-time-image" />
+        </div>
+        <div className="first-time-content">
+          <h2>뇌진구 만난적 있나요?</h2>
+          <button onClick={handleNavigate}>네!</button>
+          <button onClick={handleFristTimeYes}>아니요...</button>
+        </div>
+      </div>
+    )}
+    {!isnewModalOpen&&(
+      <>
       <div className="brain-image-wrap">
         <img
           src="/assets/Brain_NI.svg"
@@ -83,8 +136,9 @@ const Brain = () => {
             key={index}
             className="label"
             style={{
-              left: `${Math.random() * 80 + 10}%`,
-              top: `${Math.random() * 70 + 10}%`,
+              left:labePositions[label]?.left||'50%',
+              right:labePositions[label]?.top||'50%',
+              transform:'translate(-50%,-50%)',
             }}
           >
             {label}
@@ -130,6 +184,8 @@ const Brain = () => {
       <button className="navigate-button" onClick={handleNavigate}>
         홈
       </button>
+    </>
+    )}
     </div>
   );
 };

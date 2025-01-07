@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import './settings.css';
+import './EditInfo.css';
 
 const Settings = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState('');
-  const [formData, setFormData] = useState({
-    username: '',
-    useremail: '',
-    currentPassword: '',
-    newPassword: '',
-  });
   const [errorMessage, setErrorMessage] = useState(null);
+  const [username, setUsername]=useState('');
+  const [email, setEmail]=useState('');
+  const [newpassword, setPassword]=useState('');
+  const [currentpass, setCurrentpass]=useState('');
 
   // Open modal for specific type (username, email, password)
   const openModal = (type) => {
@@ -21,20 +19,13 @@ const Settings = () => {
   // Close modal
   const closeModal = () => {
     setIsModalOpen(false);
-    setFormData({
-      username: '',
-      useremail: '',
-      currentPassword: '',
-      newPassword: '',
-    });
+    setUsername('');
+    setPassword('');
+    setEmail('');
+    setCurrentpass('');
     setErrorMessage(null);
   };
 
-  // Handle input change
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
 
   // Update user info on backend
   const handleUpdate = async () => {
@@ -43,15 +34,15 @@ const Settings = () => {
 
     if (modalType === 'username') {
       url = 'http://localhost:8080/api/auth/change/nickname';
-      body = { username: formData.username };
+      body = { nickname: username };
     } else if (modalType === 'useremail') {
       url = 'http://localhost:8080/api/auth/change/email';
-      body = { useremail: formData.useremail };
+      body = { email: email };
     } else if (modalType === 'password') {
-      url = 'http://localhost:8080/api/auth/chagne/password';
+      url = 'http://localhost:8080/api/auth/change/password';
       body = {
-        currentPassword: formData.currentPassword,
-        newPassword: formData.newPassword,
+        password: currentpass,
+        newpassword: newpassword,
       };
     }
 
@@ -108,8 +99,8 @@ const Settings = () => {
                 type="text"
                 name="username"
                 placeholder="Enter new username"
-                value={formData.username}
-                onChange={handleInputChange}
+                value={username}
+                onChange={(e)=>setUsername(e.target.value)}
               />
             )}
 
@@ -118,8 +109,8 @@ const Settings = () => {
                 type="email"
                 name="useremail"
                 placeholder="Enter new email"
-                value={formData.useremail}
-                onChange={handleInputChange}
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
               />
             )}
 
@@ -129,15 +120,15 @@ const Settings = () => {
                   type="password"
                   name="currentPassword"
                   placeholder="Enter current password"
-                  value={formData.currentPassword}
-                  onChange={handleInputChange}
+                  value={currentpass}
+                  onChange={(e)=>setCurrentpass(e.target.value)}
                 />
                 <input
                   type="password"
                   name="newPassword"
                   placeholder="Enter new password"
-                  value={formData.newPassword}
-                  onChange={handleInputChange}
+                  value={newpassword}
+                  onChange={(e)=>setPassword(e.target.value)}
                 />
               </>
             )}
