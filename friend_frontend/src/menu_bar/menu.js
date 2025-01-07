@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './menu.css';
 import { useNavigate } from "react-router-dom";
 
@@ -9,10 +10,6 @@ function Menu() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
-  // const handleNavigation=(path)=>{
-  //   navigate(path);
-  // };
 
   const logout=async (e)=>{
     e.preventDefault();
@@ -50,7 +47,7 @@ function Menu() {
             ☰
           </button>
           {/* 앱 이름 */}
-          <span className="app-name">My App</span>
+          <span className="app-name">Connect Your Synapse</span>
         </div>
 
         <div className="header-right">
@@ -65,10 +62,13 @@ function Menu() {
       <nav className={`menu ${isMenuOpen ? 'open' : ''}`}>
         <ul>
           <li>홈 화면</li>
-          <li>친구 맺기</li>
-          <li>일정 관리</li>
-          <li>뇌 공유</li>
-          <li>My</li>
+          <li>
+            <Link to="/friends">친구 맺기</Link>
+          </li>
+          <li> <Link to ="/share-brain">뇌 공유</Link> </li>
+          <li>
+            <Link to="/MyPage">My Page</Link>
+          </li>
         </ul>
         <button className="logout" onClick={logout}>로그아웃</button>
       </nav>

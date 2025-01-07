@@ -75,6 +75,18 @@
     transition: transform 0.3s ease-in-out;
     z-index: 1000;
   }
+
+  /* Link 스타일 초기화 */
+    a {
+    text-decoration: none; /* 밑줄 제거 */
+    color: inherit; /* 부모 요소의 글자색 상속 */
+    }
+
+    /* 호버 시에도 밑줄 제거 */
+    a:hover {
+    text-decoration: none;
+    }
+
   
   .menu.open {
     transform: translateX(0);
@@ -120,14 +132,11 @@
   }
   
   .menu ul li:nth-child(3)::before {
-    background-image: url('/public/assets/Calendar.svg'); /* 일정 아이콘 */
+    background-image: url('/public/assets/Brain.svg'); /* 일정 아이콘 */
   }
   
   .menu ul li:nth-child(4)::before {
-    background-image: url('/public/assets/Brain.svg'); /* 뇌 아이콘 */
-  }
-  .menu ul li:nth-child(5)::before{
-    background-image: url('/public/assets/My_logo.svg');
+    background-image: url('/public/assets/My_logo.svg'); /* 뇌 아이콘 */
   }
   /* 로그아웃 버튼 */
   .logout {
