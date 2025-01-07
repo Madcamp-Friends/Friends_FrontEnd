@@ -96,7 +96,7 @@ const FriendList = () => {
   // ✅ 5. 검색어에 따라 친구 목록 필터링
   useEffect(() => {
     const filtered = friends.filter(friend =>
-      friend.nickname.toLowerCase().includes(searchTerm.toLowerCase())
+      friend?.nickname?.toLowerCase().includes((searchTerm || '').toLowerCase())
     );
     setFilteredFriends(filtered);
   }, [searchTerm, friends]);

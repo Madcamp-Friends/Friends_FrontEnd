@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './menu.css';
 import { useNavigate } from "react-router-dom";
 
-function Menu() {
+function Menu({children}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate=useNavigate();
 
@@ -62,7 +61,7 @@ function Menu() {
           {/* 알림 설정 */}
           <button className="header-btn">🔔 알림 설정</button>
           {/* 사용자 프로필 */}
-          <img src="/profile.png" alt="사용자 프로필" className="profile-img" />
+          <img src="/assets/뇌진구.png" alt="사용자 프로필" className="profile-img" />
         </div>
       </header>
 
@@ -79,7 +78,7 @@ function Menu() {
 
       {/* 메인 콘텐츠 */}
       <div className={`content ${isMenuOpen ? 'menu-open' : ''}`}>
-        <h1>메인 콘텐츠 영역</h1>
+       {children}
       </div>
     </div>
   );

@@ -1,10 +1,21 @@
-/* 전체 컨테이너: 친구 목록 + 뇌 정보 */
-.brain-share-container {
+  .brain-share-container {
+    position: fixed; /* 브라우저 뷰포트를 기준으로 위치 고정 */
+    top: 35%; /* 화면 상단에서 50% */
+    left: 50%; /* 화면 왼쪽에서 50% */
+    transform: translate(-50%, -50%); /* 자신의 크기만큼 반대로 이동 */
     display: flex; /* 가로로 나란히 배치 */
     align-items: flex-start; /* 상단 정렬 */
-    gap: 20px; /* 두 섹션 사이 간격 */
-    margin: 20px;
-  }
+    justify-content: center; /* 가로 정렬 중앙 */
+    gap: 50px; /* 두 섹션 사이 간격 */
+    margin: 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 90vw; /* 화면 너비의 90% 제한 */
+    max-height: 90vh; /* 화면 높이의 90% 제한 */
+    overflow: hidden;
+}
   
   /* 친구 목록 영역 */
   .friend-list-share {
@@ -44,12 +55,12 @@
   }
   
   /* 뇌 정보 영역 */
-  .brain-info-container {
-    flex: 1; /* 나머지 공간 차지 */
+  .brain-info-container-share_brain {
+    /*flex: 1; /* 나머지 공간 차지 */
     min-width: 400px;
-    height: 400px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    height: 300px;
+    /*background-color: #f9f9f9; */
+    /*border: 1px solid #ddd;*/
     border-radius: 10px;
     overflow: hidden;
     display: flex;
@@ -57,7 +68,6 @@
     align-items: center;
   }
   
-  /* 뇌 이미지 스타일 */
   .brain-image-rap {
     position: relative;
     width: 100%;
@@ -70,17 +80,19 @@
     object-fit: cover;
     border-radius: 10px;
   }
-  
-  /* 라벨 스타일 */
-  .label {
+
+  .label-brain_share {
     position: absolute;
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid #ddd;
-    padding: 3px 6px;
-    font-size: 0.9rem;
-    border-radius: 4px;
-    pointer-events: none;
-    color:black;
+    padding: 5px 10px;
+    background-color: rgba(100, 100, 255, 0.8);
+    color: rgb(236, 233, 246);
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
   }
 
   .brain-share-friend-list{

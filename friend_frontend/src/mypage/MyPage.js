@@ -10,13 +10,7 @@ const MyPage = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleMenuClick = (path) => {
-    // 메뉴를 닫고 애니메이션이 끝난 후 페이지 이동
-    setIsMenuOpen(false);
-    setTimeout(() => {
-      navigate(path);
-    }, 300); // CSS 애니메이션 시간 (0.3s 기준)
-  };
+
 
   const logout=async (e)=>{
     e.preventDefault();
@@ -45,45 +39,7 @@ const MyPage = () => {
 
     return (
         <div className="app">
-          {/* 상단 헤더 영역 */}
-          <header className="header">
-            <div className="header-left">
-              {/* 햄버거 버튼 */}
-              <button className="hamburger" onClick={toggleMenu}>
-                ☰
-              </button>
-              {/* 앱 이름 */}
-              
-            </div>
-    
-            <div className="header-right">
-              {/* 알림 설정 */}
-              <button className="header-btn">🔔 알림 설정</button>
-              {/* 사용자 프로필 */}
-              <img src="/profile.png" alt="사용자 프로필" className="profile-img" />
-            </div>
-          </header>
-    
-          {/* 메뉴 */}
-          <nav className={`menu ${isMenuOpen ? 'open' : ''}`}>
-        <ul>
-        <li>
-            <button onClick={() => handleMenuClick('/Home')}>홈 화면</button>
-          </li>
-          <li>
-            <button onClick={() => handleMenuClick('/friends')}>친구 맺기</button>
-          </li>
-          <li>
-            <button onClick={() => handleMenuClick('/share-brain')}>뇌 공유</button>
-          </li>
-          <li>
-            <button onClick={() => handleMenuClick('/MyPage')}>My Page</button>
-          </li>
-        </ul>
-        <button className="logout" onClick={logout}>
-          로그아웃
-        </button>
-      </nav>
+          
     
 
         <div className="MyMenuAll">
@@ -95,13 +51,15 @@ const MyPage = () => {
             </ul>
           </nav>
         </div>
-          
-          
+        
+        <div className="imageAndText">
+        <p>나의 정보를 수정해주세요~!!</p>
+        <img src = "/assets/뇌진구.png" className="brain_friendLOGO"></img>
+        
         </div>
         
-
-
-
-      );
+          
+      </div>
+    );
 };
 export default MyPage;
