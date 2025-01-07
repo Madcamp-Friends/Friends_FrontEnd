@@ -9,7 +9,7 @@ const Brain = () => {
   const [errorMessage, setErrorMessage]=useState(null);
   const [isnewModalOpen, setIsNewModalOpen]=useState(true);
   const [fadeOut, setFadeOut] = useState(false);
-  const [labePositions, setLabelPositions]=useState({});
+  const [labelPositions, setLabelPositions]=useState({});
 
   const navigate=useNavigate();
 
@@ -18,21 +18,6 @@ const Brain = () => {
     setIsModalOpen(true);
   };
 
-  // useEffect(()=>{
-  //   if(newLabel.length>0){
-  //     const initialPostion={};
-  //     const totalLabels=newLabel.length;
-  //     const radius=80;
-  //     newLabel.forEach((label,index)=>{
-  //       const angle=(index/totalLabels)*2*Math.PI;
-  //       initialPostion[label.labelId]={
-  //         left: `calc(50% +${radius*Math.cos(angle)}px)`,
-  //         top: `calc(50%+${radius+Math.sin(angle)}px)`,
-  //       };
-  //     });
-  //     setLabelPositions(initialPostion);
-  //   }
-  // },[labels]);
 
   // ❌ Close the modal
   const handleCloseModal = () => {
@@ -57,19 +42,6 @@ const Brain = () => {
 
   // 💾 Save the new label to the backend
   const handleSaveBrain = async () => {
-    if(labels.length>0){
-      const initialPostion={};
-      const totalLabels=labels.length;
-      const radius=150;
-      labels.forEach((label,index)=>{
-        const angle=(index/totalLabels)*2*Math.PI;
-        initialPostion[label.labelId]={
-          left: `calc(50% +${radius*Math.cos(angle)}px)`,
-          top: `calc(50%+${radius+Math.sin(angle)}px)`,
-        };
-      });
-      setLabelPositions(initialPostion);
-    }
     try {
       const response = await fetch("http://localhost:8080/brain/create", {
         method: "POST",
@@ -81,6 +53,19 @@ const Brain = () => {
           labelContent: labels
         }),
       });
+      // if(labels.length>0){
+      //   const initialPostion={};
+      //   const totalLabels=labels.length;
+      //   const radius=150;
+      //   labels.forEach((label,index)=>{
+      //     const angle=(index/totalLabels)*2*Math.PI;
+      //     initialPostion[label.labelId]={
+      //       left: `calc(50% +${radius*Math.cos(angle)}px)`,
+      //       top: `calc(50%+${radius+Math.sin(angle)}px)`,
+      //     };
+      //   });
+      //   setLabelPositions(initialPostion);
+      // }
 
       console.log("Response status:",response.status);
 
@@ -95,6 +80,22 @@ const Brain = () => {
       console.error('Error saving label:',error);
     }
   };
+
+  useEffect(()=>{
+    if(labels.length>0){
+      const initialPosition={};
+      const totalLabels=labels.length;
+      const radius=300;
+      labels.forEach((label,index)=>{
+        const angle=(index/totalLabels)*2*Math.PI;
+        initialPosition[label.labelId]={
+          left: `calc(50% +${radius*Math.cos(angle)}px)`,
+          top: `calc(50%+${radius+Math.sin(angle)}px)`,
+        };
+      });
+      setLabelPositions(initialPosition);
+    }
+  },[labels]);
 
   const handleFristTimeYes=()=>{
     setFadeOut(true);
@@ -131,13 +132,13 @@ const Brain = () => {
         />
 
         {/* Render Labels */}
-        {labels.map((label, index) => (
+        {labels.map((label) => (
           <div
-            key={index}
+            key={label.labelId}
             className="label"
             style={{
-              left:labePositions[label]?.left||'50%',
-              right:labePositions[label]?.top||'50%',
+              left:labelPositions[label.labelId]?.left||'50%',
+              right:labelPositions[label.labelId]?.top||'50%',
               transform:'translate(-50%,-50%)',
             }}
           >
