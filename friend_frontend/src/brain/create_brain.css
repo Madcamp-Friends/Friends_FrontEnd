@@ -1,55 +1,75 @@
-/* Brain.css */
-
 /* Container to fill the entire viewport and center contents */
 .brain-container {
-    position: relative;
-    width: 100%;
-    height: 100vh; /* Full browser height */
-    display: flex;
-    justify-content: center; /* Horizontal center */
-    align-items: center;     /* Vertical center */
-    background-color: #f5f5f5; /* Light background color */
-  }
-  
-  /* Wrap for the brain image so it can be sized or positioned if needed */
-  .brain-image-wrap {
-    display: inline-block;
-    position: relative;
-  }
-  
-  /* Brain image styling; adjust size as you like */
-  .brain-image {
-    width: 40vw;        /* 40% of viewport width */
-    max-width: 500px;   /* cap at 500px if screen is large */
-    height: auto;
-    display: block;
-  }
-  
-  /* Common styles for the two buttons */
-  .save-button,
-  .add-button {
-    position: absolute;
-    bottom: 30px;         /* 30px from the bottom */
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    color: #ffffff;
-  }
-  
-  /* Bottom-left: Save button */
-  .save-button {
-    left: 30px;
-    background-color: #4CAF50; /* Green */
-  }
-  
-  /* Bottom-right: Add (+) button */
-  .add-button {
-    right: 30px;
-    background-color: #f44336; /* Red */
-    font-weight: bold;
-    font-size: 24px; 
-    line-height: 0.8;    /* Tweak line-height for the plus sign */
-  }
-  
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full browser height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c1c1c; /* Dark background for contrast */
+}
+
+/* Wrap for the brain image so it can be sized or positioned if needed */
+.brain-image-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+/* Brain image styling */
+.brain-image {
+  width: 40vw;
+  max-width: 500px;
+  height: auto;
+  display: block;
+}
+
+/* Floating label styling */
+.label {
+  position: absolute;
+  padding: 5px 10px;
+  background-color: rgba(100, 100, 255, 0.8); /* Semi-transparent purple background */
+  color: white;
+  border-radius: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  transform: translate(-50%, -50%); /* Center the label on the position */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Add button styling */
+.add-button {
+  margin-top: 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+/* Right-bottom corner button styling */
+.navigate-button {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  background-color: #4caf50; /* Match the green color from .add-button */
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Match shadow style */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for the button */
+.navigate-button:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
+  transform: scale(1.05); /* Subtle scaling effect */
+}
+
