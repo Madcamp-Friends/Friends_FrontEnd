@@ -40,7 +40,7 @@ const Login = () => {
                 const data=await response.text();
                 alert(data);
                 setIsModalOpen(false);
-                navigate("/Home");
+                navigate("/MakeBrain");
             }else{
                 const errorText=await response.text();
                 setErrorMessage(errorText||"Invalid username or password");
