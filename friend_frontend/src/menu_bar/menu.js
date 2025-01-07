@@ -78,7 +78,7 @@ function Menu({children}) {
 
       {/* 메인 콘텐츠 */}
       <div className={`content ${isMenuOpen ? 'menu-open' : ''}`}>
-       {children}
+       {children} 
       </div>
     </div>
   );
