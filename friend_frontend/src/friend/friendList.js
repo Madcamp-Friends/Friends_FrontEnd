@@ -36,7 +36,12 @@ const FriendList = () => {
   useEffect(() => {
     const fetchFriends = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/auth/members');
+        const response = await fetch('http://localhost:8080/api/auth/members', {
+          method: 'GET',
+          credentials: 'include', 
+        }
+          
+        );
         const data = await response.json();
 
         const updatedFriends = data.map(friend => ({
