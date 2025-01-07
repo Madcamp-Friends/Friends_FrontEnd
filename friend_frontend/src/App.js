@@ -10,6 +10,7 @@ import MyPage from "./mypage/MyPage.js"
 import MyInfo from "./mypage/MyInfo.js"
 import MyFriendList from "./mypage/MyFriends.js"
 import MyBrain from "./mypage/MyBrain.js"
+import Brain_Share from "./brain/brain_share.js";
 
 function App(){
     return(
@@ -23,6 +24,7 @@ function App(){
                 <Route path="/MakeBrain" element={<Brain />} />
                 <Route path="/MyInfo" element={<MyInfo />} />
                 <Route path="/MyFriendList" element={<MyFriendList />} />
+                <Route path="/share-brain" element={<Brain_Share />}/>
                 <Route path="/MyBrain" element={<MyBrain />} />
                 <Route path="/MyInfo" element={<MyInfo />} />
                 <Route path="/MyPage" element={<MyPage />} />
