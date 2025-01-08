@@ -170,8 +170,8 @@ const Settings = () => {
             {errorMessage && <p className="error-message">{errorMessage}</p>}
 
             <div className="modal-buttons">
-              <button onClick={handleUpdate}>Update</button>
-              <button onClick={closeModal}>Cancel</button>
+              <button onClick={handleUpdate}>수정하기기</button>
+              <button onClick={closeModal}>취소하기</button>
             </div>
           </div>
         </div>
