@@ -129,6 +129,7 @@ const FriendList = () => {
           placeholder="🔍 친구를 닉네임으로 검색하세요"
           value={searchTerm}
           onChange={handleSearchChange}
+          className="search-text"
         />
       </div>
 
@@ -160,4 +161,5 @@ const FriendList = () => {
 };
 
 export default FriendList;
+
 

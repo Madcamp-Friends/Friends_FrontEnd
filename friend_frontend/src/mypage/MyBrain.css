@@ -125,11 +125,12 @@
 }
 
 .open-modal {
-  background-color: #1b3ec8;
+  background-color: #b27df3;
   color: white;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
   border-radius: 5px;
   display: inline-block; /* 뇌 이미지 옆으로 배치 */
@@ -141,9 +142,10 @@
 
 /* 관심사 삭제 모달 열기 버튼 */
 .delete-modal-open-button {
-  background-color: #d31229;
+  background-color: #eb6171;
   color: white;
   border: none;
+  font-weight: bold;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;

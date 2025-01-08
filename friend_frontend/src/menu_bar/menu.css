@@ -34,7 +34,7 @@
   
   /* 앱 이름 */
   .app-name {
-    font-size: 18px;
+    font-size: 23px;
     font-weight: bold;
   }
   
@@ -107,9 +107,9 @@
   .menu ul li {
     display: flex; /* 아이콘과 텍스트를 나란히 배치 */
     align-items: center; /* 수직 정렬 */
-    gap: 8px; /* 아이콘과 텍스트 사이 간격 */
+    gap: 10px; /* 아이콘과 텍스트 사이 간격 */
     margin: 10px 0; /* 각 메뉴 항목 간 간격 */
-    font-size: 16px;
+    font-size: 20px;
   }
   
   /* 아이콘 추가 */
