@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './EditInfo.css';
 
 const Settings = () => {
@@ -9,6 +9,35 @@ const Settings = () => {
   const [email, setEmail]=useState('');
   const [newpassword, setPassword]=useState('');
   const [currentpass, setCurrentpass]=useState('');
+
+  const [userInfo, setUserInfo]=useState({
+    nickname: '',
+    email: '',
+  });
+
+  useEffect(()=>{
+    const featchUserInfo=async()=>{
+      try{
+        const response=await fetch('http://localhost:8080/api/auth/get/info',{
+          method: 'GET',
+          credentials: 'include',
+        });
+
+        if(response.ok){
+          const data=await response.json();
+          setUserInfo({
+            nickname: data.nickname,
+            email: data.email,
+          });
+        }else{
+          setErrorMessage('Failed to load user information');
+        }
+      }catch(error){
+        setErrorMessage('An error occured');
+      }
+    }
+    featchUserInfo();
+  },[])
 
   // Open modal for specific type (username, email, password)
   const openModal = (type) => {
@@ -58,6 +87,11 @@ const Settings = () => {
 
       if (response.ok) {
         alert(`${modalType} updated successfully!`);
+        if(modalType==='username'){
+          setUserInfo((prev)=>({...prev, nickname: username}));
+        }else if(modalType==='useremail'){
+          setUserInfo((prev)=> ({...prev, email: email}));
+        }
         closeModal();
       } else {
         const data = await response.json();
@@ -73,12 +107,12 @@ const Settings = () => {
       <h1>환경설정</h1>
 
       <div className="settings-option">
-        <span>사용자 이름</span>
+        <span>사용자 이름: {userInfo.nickname}</span>
         <button onClick={() => openModal('username')}>Change</button>
       </div>
 
       <div className="settings-option">
-        <span>이메일</span>
+        <span>이메일: {userInfo.email}</span>
         <button onClick={() => openModal('useremail')}>Change</button>
       </div>
 
