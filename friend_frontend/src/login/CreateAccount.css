@@ -1,7 +1,7 @@
 /* Main Form Container */
 .create-account {
-    width: 100%;
-    max-width: 800px;
+    width: 90%;
+    max-width: 600px;
     margin: 0 auto;
     padding: 32px;
     background-color: #e8d6f3;
@@ -12,7 +12,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    min-height: 400px;
 }
 
 /* Form Title (Centered) */
