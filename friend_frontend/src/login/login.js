@@ -76,8 +76,8 @@ const Login = () => {
             </div>
             {showButtons&&(
                 <div className="button-container">
-                    <button onClick={openModal}>Login</button>
-                    <button type="button" onClick={handleCreateAccount}>Create Account</button>
+                    <button onClick={openModal}>로그인</button>
+                    <button type="button" onClick={handleCreateAccount}>계정 만들기</button>
                 </div>
             )}
 
@@ -85,7 +85,7 @@ const Login = () => {
         {isModalOpen && (
             <div className="modal-overlay">
                 <div className="modal-content">
-                    <h3>Login</h3>
+                    <h3>로그인</h3>
                     {errorMessage && <p className="error-message">{errorMessage}</p>}
                     <form onSubmit={handleSubmit}>
                         <div className="input-field">
@@ -94,7 +94,7 @@ const Login = () => {
                                 type="text"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
-                                placeholder="Enter username"
+                                placeholder="닉네임 입력해주세요"
                                 required
                             />
                         </div>
@@ -105,7 +105,7 @@ const Login = () => {
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                placeholder="Enter password"
+                                placeholder="비밀번호 입력해주세요"
                                 required
                             />
                         </div>

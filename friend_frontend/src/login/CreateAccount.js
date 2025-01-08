@@ -58,49 +58,49 @@ const CreateAccount = () => {
             <h2>Create Account</h2>
             <form onSubmit={handleCreate}>
                 <div className="input-field">
-                    <label>Nickname:</label>
+                    <label>닉네임:</label>
                     <input
                         type="text"
                         value={nickname}
                         onChange={(e) => setNickname(e.target.value)}
-                        placeholder="Enter username"
+                        placeholder="닉네임 입력해주세요"
                         required
                     />
                 </div>
                 <div className="input-field">
-                    <label>Email:</label>
+                    <label>이메일:</label>
                     <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter email"
+                        placeholder="이메일 입력해주세요"
                         required
                     />
                 </div>
                 <div className="input-field">
-                    <label>Password:</label>
+                    <label>비밀번호:</label>
                     <input
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Enter password"
+                        placeholder="비밀번호 입력해주세요"
                         required
                     />
                 </div>
                 <div className="input-field">
-                    <label>PasswordCheck:</label>
+                    <label>비밀번호 확인:</label>
                     <input
                         type="password"
                         value={passwordcheck}
                         onChange={(e) => setCheck(e.target.value)}
-                        placeholder="Enter passwordcheck"
+                        placeholder="비밀번호 확인해주세요"
                         required
                     />
                 </div>
-                <button type="submit" onClick={handleCreate}>Create Account</button>
+                <button type="submit" onClick={handleCreate}>계정 만들기</button>
             </form>
             <button type="button" onClick={handleBackToLogin} className="back-to-login-button">
-                Back to Login
+                로그인
             </button>
         </div>
     );
