@@ -32,7 +32,7 @@ function App(){
                 <Route path="/MakeBrain" element={<Brain />} />    
                    
             <Route element={<ProtectedLayout/>}>
-                <Route path="/Home" />    
+                <Route path="/Home" element={<FloatingImage/>}/>    
                 
                 <Route path="/friends" element={<FriendList />} />
                 
@@ -42,7 +42,7 @@ function App(){
                 <Route path="/MyBrain" element={<MyBrain />} />
                 <Route path="/MyPage" element={<MyPage />} />
                 <Route path="/MySetting" element={<Settings />} />
-                <Route path="/CrazyHome" element={<FloatingImage />} />
+                {/* <Route path="/CrazyHome" element={<FloatingImage />} /> */}
                 </Route>
             </Routes>
         </Router>

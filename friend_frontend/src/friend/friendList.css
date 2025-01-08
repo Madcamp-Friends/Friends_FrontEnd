@@ -1,5 +1,5 @@
 .friend-list {
-  width: 80%;
+  width: 60%;
   margin: 20px auto;
   font-family: Arial, sans-serif;
 }
@@ -9,8 +9,12 @@
   margin-bottom: 20px;
 }
 
+.search-text{
+  height:30px;
+}
+
 .search-bar input {
-  width: 100%;
+  width: 97%;
   padding: 8px 12px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -35,7 +39,7 @@
 
 .friend-nickname {
   flex: 1;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .friend-status {
@@ -45,4 +49,9 @@
   padding: 4px 8px;
   font-size: 12px;
   border-color: #e6ccff;
+}
+
+.current-user p{
+  font-weight: bold;
+  font-size: 20px;
 }
