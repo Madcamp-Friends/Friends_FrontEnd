@@ -28,13 +28,13 @@
 }
 
 .logo {
-    width: 500px;
-    height: 500px;
+    width: 650px;
+    height: 650px;
     margin-bottom: 20px;
 }
 
 .website-name {
-    font-size: 36px;
+    font-size: 40px;
     color: #333;
     opacity: 0;
     transition: opacity 1s ease-out 2s;
@@ -45,7 +45,7 @@
 }
 
 .sub-name{
-    font-size: 36px;
+    font-size: 40px;
     color: #333;
     opacity: 0;
     transition: opacity 1s ease-out 4s;
@@ -60,7 +60,7 @@
 .button-container button {
     width: 200px;
     padding: 12px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     color: white;
     border: none;

@@ -98,7 +98,7 @@ const Brain = () => {
   };
 
   const handleNavigate = () => {
-    navigate('/CrazyHome');
+    navigate('/Home');
   };
 
   return (

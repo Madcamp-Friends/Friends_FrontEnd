@@ -32,17 +32,14 @@ function App(){
                 <Route path="/MakeBrain" element={<Brain />} />    
                    
             <Route element={<ProtectedLayout/>}>
-                <Route path="/Home" />    
-                
+                <Route path="/Home" element={<FloatingImage/>}/>    
                 <Route path="/friends" element={<FriendList />} />
-                
                 <Route path="/MyInfo" element={<MyInfo />} />
                 <Route path="/MyFriendList" element={<MyFriendList />} />
                 <Route path="/share-brain" element={<Brain_Share />}/>
                 <Route path="/MyBrain" element={<MyBrain />} />
                 <Route path="/MyPage" element={<MyPage />} />
                 <Route path="/MySetting" element={<Settings />} />
-                <Route path="/CrazyHome" element={<FloatingImage />} />
                 </Route>
             </Routes>
         </Router>
