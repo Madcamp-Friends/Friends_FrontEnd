@@ -12,6 +12,7 @@ import MyFriendList from "./mypage/MyFriends.js"
 import MyBrain from "./mypage/MyBrain.js"
 import Settings from "./editinfo/EditInfo.js"
 import Brain_Share from "./brain/brain_share.js";
+import FloatingImage from "./homescreen/Crazyhome.js";
 
 function ProtectedLayout(){
     return (
@@ -41,7 +42,7 @@ function App(){
                 <Route path="/MyBrain" element={<MyBrain />} />
                 <Route path="/MyPage" element={<MyPage />} />
                 <Route path="/MySetting" element={<Settings />} />
-
+                <Route path="/CrazyHome" element={<FloatingImage />} />
                 </Route>
             </Routes>
         </Router>

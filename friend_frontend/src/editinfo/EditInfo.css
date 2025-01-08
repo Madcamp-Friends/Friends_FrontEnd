@@ -1,137 +1,168 @@
-/* Main container for the settings page */
+/* 🌸 Settings Page Container */
 .settings-container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #1c1c1c;
-    color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    text-align: center;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f8e8f9; /* Soft pink background */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.settings-container h1 {
+  margin-bottom: 20px;
+  color: #663399; /* Deep purple text */
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* 🌸 Settings Option Styling */
+.settings-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5d1f5; /* Light purple background */
+  padding: 12px 20px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.settings-option span {
+  font-size: 30px;
+  color: #663399;
+}
+
+.settings-option button {
+  background-color: #d6a4e0; /* Soft purple button */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.settings-option button:hover {
+  background-color: #c589d4; /* Darker purple on hover */
+}
+
+/* 🌸 Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(102, 51, 153, 0.8); /* Semi-transparent deep purple overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+
+/* 🌸 Modal Content Box */
+.modal-content {
+  background-color: #fef6ff; /* Very light pink */
+  padding: 30px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-bottom: 20px;
+  color: #663399; /* Deep purple text */
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* 🌸 Input Fields */
+.modal-content input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: 1px solid #d9a3d9;
+  border-radius: 8px;
+  background-color: #fdeaff; /* Light purple input field */
+  color: #663399;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s ease;
+}
+
+.modal-content input:focus {
+  border-color: #c589d4; /* Darker purple on focus */
+  outline: none;
+}
+
+/* 🌸 Error Message Styling */
+.error-message {
+  color: #ff4d6d;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* 🌸 Modal Buttons */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-buttons button {
+  background-color: #d6a4e0; /* Soft purple */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-buttons button:hover {
+  background-color: #c589d4;
+}
+
+.modal-buttons button:last-child {
+  background-color: #ff4d6d; /* Pink cancel button */
+}
+
+.modal-buttons button:last-child:hover {
+  background-color: #e03a56;
+}
+
+/* 🌸 Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  /* Header styling */
-  .settings-container h1 {
-    font-size: 28px;
-    margin-bottom: 30px;
-    color: #f1f1f1;
+  to {
+    opacity: 1;
   }
-  
-  /* Styling for each settings option */
-  .settings-option {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 15px 0;
-    padding: 12px 18px;
-    background-color: #292929;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 🌸 Responsive Design */
+@media (max-width: 600px) {
+  .settings-container {
+    padding: 15px;
   }
-  
-  /* Change button styling */
-  .settings-option button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .settings-option button:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
-  }
-  
-  /* Modal overlay styling */
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-  }
-  
-  /* Modal content styling */
+
   .modal-content {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 95%;
   }
-  
-  /* Modal header styling */
+
   .modal-content h3 {
-    margin-bottom: 20px;
     font-size: 20px;
-    color: #333;
   }
-  
-  /* Input fields inside the modal */
-  .modal-content input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-  }
-  
-  /* Error message styling */
-  .error-message {
-    color: red;
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  
-  /* Buttons inside the modal */
-  .modal-buttons {
-    display: flex;
-    justify-content: space-between;
-  }
-  
+
   .modal-buttons button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+    padding: 10px 15px;
     font-size: 14px;
-    cursor: pointer;
   }
-  
-  .modal-buttons button:first-child {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  .modal-buttons button:last-child {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  /* Button hover effects */
-  .modal-buttons button:hover {
-    opacity: 0.9;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 500px) {
-    .settings-container {
-      padding: 15px;
-    }
-  
-    .modal-content {
-      width: 90%;
-    }
-  }
-  
+}
