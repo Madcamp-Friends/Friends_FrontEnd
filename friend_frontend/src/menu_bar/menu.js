@@ -58,8 +58,6 @@ function Menu({children}) {
         </div>
 
         <div className="header-right">
-          {/* 알림 설정 */}
-          <button className="header-btn">🔔 알림 설정</button>
           {/* 사용자 프로필 */}
           <img src="/assets/뇌진구.png" alt="사용자 프로필" className="profile-img" />
         </div>
