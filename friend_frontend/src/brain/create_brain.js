@@ -31,12 +31,12 @@ const Brain = () => {
       setErrorMessage('Label cannot be empty');
       return;
     }
-    if (labels.includes(trimmedLabel)) {
+    if (labels.includes(`#${trimmedLabel}`)) {
       setErrorMessage('Label already exists');
       return;
     }
 
-    setLabels([...labels, trimmedLabel]);
+    setLabels([...labels, `#${trimmedLabel}`]);
     setNewLabel('');
     setErrorMessage(null);
   };
@@ -98,7 +98,7 @@ const Brain = () => {
   };
 
   const handleNavigate = () => {
-    navigate('/Home');
+    navigate('/CrazyHome');
   };
 
   return (
@@ -149,7 +149,7 @@ const Brain = () => {
           {isModalOpen && (
             <div className="modal-overlay">
               <div className="modal-content">
-                <h3>Add New Label</h3>
+                <h3>뇌진구에게 나를 소개할까요?</h3>
 
                 {/* List of Existing Labels */}
                 <ul>
@@ -163,14 +163,14 @@ const Brain = () => {
                   type="text"
                   value={newLabel}
                   onChange={(e) => setNewLabel(e.target.value)}
-                  placeholder="Enter new label"
+                  placeholder="소개하기"
                 />
-                <button onClick={handleAddNewLabel}>Add Label</button>
+                <button onClick={handleAddNewLabel}>추가</button>
 
                 {/* Save and Cancel Buttons */}
                 <div className="modal-buttons">
-                  <button onClick={handleSaveBrain}>Save</button>
-                  <button onClick={handleCloseModal}>Cancel</button>
+                  <button className="save-button" onClick={handleSaveBrain}>저장</button>
+                  <button onClick={handleCloseModal}>취소</button>
                 </div>
               </div>
             </div>

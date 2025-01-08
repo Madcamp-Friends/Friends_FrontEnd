@@ -70,20 +70,20 @@ const Settings = () => {
 
   return (
     <div className="settings-container">
-      <h1>Settings</h1>
+      <h1>환경설정</h1>
 
       <div className="settings-option">
-        <span>Username</span>
+        <span>사용자 이름</span>
         <button onClick={() => openModal('username')}>Change</button>
       </div>
 
       <div className="settings-option">
-        <span>Email</span>
+        <span>이메일</span>
         <button onClick={() => openModal('useremail')}>Change</button>
       </div>
 
       <div className="settings-option">
-        <span>Password</span>
+        <span>비밀번호</span>
         <button onClick={() => openModal('password')}>Change</button>
       </div>
 
@@ -91,14 +91,14 @@ const Settings = () => {
         <div className="modal-overlay">
           <div className="modal-content">
             <h3>
-              Change {modalType === 'username' ? 'Username' : modalType === 'useremail' ? 'Email' : 'Password'}
+              {modalType === 'username' ? '이름 설정' : modalType === 'useremail' ? '이메일 설정' : '비밀번호 설정'}
             </h3>
 
             {modalType === 'username' && (
               <input
                 type="text"
                 name="username"
-                placeholder="Enter new username"
+                placeholder="새로운 이름 입력해주세요 ><"
                 value={username}
                 onChange={(e)=>setUsername(e.target.value)}
               />
@@ -108,7 +108,7 @@ const Settings = () => {
               <input
                 type="email"
                 name="useremail"
-                placeholder="Enter new email"
+                placeholder="새로운 이메일"
                 value={email}
                 onChange={(e)=>setEmail(e.target.value)}
               />
@@ -119,14 +119,14 @@ const Settings = () => {
                 <input
                   type="password"
                   name="currentPassword"
-                  placeholder="Enter current password"
+                  placeholder="현재 비밀번호"
                   value={currentpass}
                   onChange={(e)=>setCurrentpass(e.target.value)}
                 />
                 <input
                   type="password"
                   name="newPassword"
-                  placeholder="Enter new password"
+                  placeholder="새로운 비밀번호"
                   value={newpassword}
                   onChange={(e)=>setPassword(e.target.value)}
                 />
