@@ -9,6 +9,10 @@ const MyBrain = () => {
   const [editingLabelId, setEditingLabelId] = useState(null); // 현재 편집 중인 Label ID
   const [editingText, setEditingText] = useState(''); // 편집 중인 Label 텍스트
   const [labelPositions, setLabelPositions] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false); // useState() 괄호안은 초기화 
+  const [inputValue, setInputValue] = useState(''); // string이니까 빈값으로 변경
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); // delete api 전용 상태변수 
+
 
   // ✅ 데이터 불러오기
   useEffect(() => {
@@ -41,7 +45,7 @@ const MyBrain = () => {
     if (brainData.length > 0) {
       const initialPositions = {};
       const totalLabels = brainData.length; // 라벨의 총 개수
-      const radius = 80; // 뇌 영역 내 라벨이 퍼지는 반경 (px)
+      const radius = 110; // 뇌 영역 내 라벨이 퍼지는 반경 (px)
   
       brainData.forEach((label, index) => {
         const angle = (index / totalLabels) * 2 * Math.PI; // 각 라벨에 고유한 각도 할당
@@ -54,9 +58,6 @@ const MyBrain = () => {
       setLabelPositions(initialPositions);
     }
   }, [brainData]);
-
-
-  
 
   // ✅ Label 클릭 시 편집 상태 활성화
   const handleLabelClick = (id, currentText) => {
@@ -105,27 +106,107 @@ const MyBrain = () => {
     }
   };
 
-  // ✅ 엔터 키 입력 시 저장
+  // 엔터 키 입력 시 저장
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       saveEditedLabel();
     }
   };
 
-  // ✅ 데이터 로딩 중 화면
+  // 데이터 로딩 중 화면
   if (loading) {
     return <p>🧠 뇌 데이터를 불러오는 중...</p>;
   }
 
-  // ✅ 에러 화면
+  // 에러 화면
   if (error) {
     return <p>❌ 오류 발생: {error}</p>;
   }
 
+
+  /* 뇌에 Label 추가하기 */
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setInputValue('')
+  };
+
+  const setLableNameChange = (e) => {
+    setInputValue(e.target.value);
+  }
+
+
+  // 관심사 추가 API 연결 
+  const addLabel = async () => {
+    try{
+      const response = await fetch(`http://localhost:8080/brain/add/label?labelName=${inputValue}`,
+      {
+        method:'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials:'include'
+      });
+
+      if (!response.ok){
+        throw new Error('Failed to add label : ' + "error");
+      }
+
+      const data = await response.json();
+      setBrainData([...brainData,data])
+      console.log('서버 응답 : data - ', brainData)
+      closeModal();
+    } catch (error) {
+      console.log()
+    }
+  };
+
+  // 삭제 API 연동 
+  const deleteLabel = async (id) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/brain/label?id=${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        }
+      );
+  
+      if (!response.ok) {
+        throw new Error('Failed to delete label');
+      }
+  
+      // 성공적으로 삭제된 경우 상태에서 해당 라벨 제거
+      setBrainData((prevData) =>
+        prevData.filter((label) => label.labelId !== id)
+      );
+  
+      console.log(`라벨 (ID: ${id}) 삭제 완료`);
+    } catch (error) {
+      console.error('❌ 라벨 삭제 오류:', error);
+    }
+  };
+
+  const openDeleteModal = () => {
+    setIsDeleteModalOpen(true);
+  };
+  
+  // 삭제 모달 닫기
+  const closeDeleteModal = () => {
+    setIsDeleteModalOpen(false);
+  };
+  
+
   // ✅ 데이터 화면 렌더링
   return (
     <div className="my-brain">
-      <h2 id="title_myBrain"> 🧠 내 뇌 정보</h2>
+      <h1 id="title_myBrain"> 🧠 내 뇌 정보</h1>
       {brainData.length === 0 ? (
         <p>저장된 뇌 데이터가 없습니다.</p>
       ) : (
@@ -133,8 +214,9 @@ const MyBrain = () => {
           <img
             src="/assets/Brain_NI.svg"
             alt="Brain"
-            className="brain-image"
+            className="brain-image_svg"
           />
+          
 
           {/* Render Labels */}
           {brainData.map((label) => (
@@ -170,8 +252,61 @@ const MyBrain = () => {
               )}
             </div>
           ))}
+          <div className="brain-buttons-container">
+            <button onClick={openModal} className="open-modal"> 관심사 추가하기 </button>
+            <button onClick={openDeleteModal} className="delete-modal-open-button"> 관심사 삭제하기 </button> 
+          </div>
         </div>
       )}
+      
+      
+      {isModalOpen && (
+        <div className="modal-entire"> 
+          <div className="modal">
+            <h3>자신의 뇌에 추가하고 싶은 <br/> 관심사를 추가해주세요!</h3> 
+            <input 
+              type="text"   
+              value={inputValue}
+              onChange={setLableNameChange}
+              placeholder='추가할 관심사를 입력해주세요'
+              className='modal-input'/>
+            <div className="modal-buttons">
+              <button onClick={addLabel} className="confirm-btn">저장</button>
+              <button onClick={closeModal} className="cancel-btn-add">취소</button>
+            </div>
+
+          </div>
+          
+        </div>
+      )}
+      
+
+      {/* 관심사 삭제 모달 */}
+      {isDeleteModalOpen && (
+        <div className="modal-entire">
+          <div className="modal delete-modal">
+            <h3>🗑️ 관심사 삭제</h3>
+            <p>삭제할 관심사를 선택하세요:</p>
+            <ul className="delete-label-list">
+              {brainData.map((label) => (
+                <li key={label.labelId} className="delete-label-item">
+                  <span>{label.labelTopic}</span>
+                  <button
+                    onClick={() => deleteLabel(label.labelId)}
+                    className="delete-button"
+                  >
+                    삭제
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <button onClick={closeDeleteModal} className="cancel-btn">
+              닫기
+            </button>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };
