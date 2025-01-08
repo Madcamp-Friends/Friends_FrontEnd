@@ -66,7 +66,7 @@ function Menu({children}) {
       {/* 메뉴 */}
       <nav className={`menu ${isMenuOpen ? 'open' : ''}`}>
         <ul>
-          <li> <button onClick={() => handleMenuClick('/CrazyHome')}>홈 화면</button></li>
+          <li> <button onClick={() => handleMenuClick('/Home')}>홈 화면</button></li>
           <li> <button onClick={() => handleMenuClick('/friends')}>친구 맺기</button> </li>
           <li> <button onClick={() => handleMenuClick('/share-brain')}>뇌 공유</button> </li>
           <li> <button onClick={() => handleMenuClick('/MyPage')}>My Page</button> </li>
